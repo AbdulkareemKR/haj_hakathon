@@ -15,13 +15,11 @@ nunjucks.configure('./views', {
 // app.use(cookieParser())
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', language_router);
-// app.use('/sales/', sales_router);
 
-// app.use(express.static(path.join(__dirname, '../punpm root -gblic')));
 app.use(express.static("public"));
 
 
 
 app.listen(process.env.PORT || 3000, function() {
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+    console.log("Express server listening on http://localhost:%d in %s mode", this.address().port, app.settings.env);
 });

@@ -1,667 +1,98 @@
-body,
-html {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto";
+body {
+    background-color: #2ecc71;
+    font-family: source-sans-pro, sans-serif;
 }
 
-#navbarSection {
-    background-image: url(projectImages/party.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height: 60vw;
-    /* grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    justify-items: right; */
-}
-
-a,
-a:hover {
-    text-decoration: none;
-}
-
-.About {
-    margin-right: 0;
+h1 {
     margin-left: auto;
-}
-
-.About>li>a {
-    font-weight: 500;
-    padding: 0 12px;
-    font-size: 15px;
-    color: white;
-}
-
-.About>li {
-    border-top: 10px solid;
-    border-color: transparent;
-    padding-top: 12px;
-}
-
-.About li:hover {
-    border-color: #ffaa00;
-}
-
-#partyTime {
-    font-family: "Roboto";
-    color: white;
-    margin-top: 5.5rem;
-    font-size: 2.1rem;
-    font-weight: 600;
-}
-
-.contentent {
-    margin: 1rem 10rem 4rem 10rem;
-    display: grid;
-    grid-template-columns: 3fr;
-    grid-template-rows: 3fr;
-    size: 100%;
-}
-
-#clip-path1 {
-    -webkit-clip-path: polygon( 100% 0%, 90% 50%, 100% 100%, 75% 100%, 0% 100%, 10% 50%, 0% 0%);
-    clip-path: polygon( 100% 0%, 90% 50%, 100% 100%, 75% 100%, 0% 100%, 10% 50%, 0% 0%);
-    background-color: #ffaa00;
-    color: white;
-    font-family: "Roboto";
+    margin-top: 50px;
+    text-align: center;
     font-weight: 100;
-    height: 9rem;
-    width: 20rem;
-    text-align: center;
-    padding: 0 1rem;
-    padding-top: 1rem;
-    font-size: 1.7rem;
-    grid-column: 1;
-    grid-row: 2;
-    margin-top: 4rem;
-}
-
-#order-button {
-    background-color: #ffaa00;
-    outline: none;
-    border: none;
-    color: #a80e0e;
-    font-size: 1rem;
-    margin-top: 6rem;
-    border-radius: 1rem;
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    transition: all 0.3s;
-    max-width: 8rem;
-    align-self: center;
-}
-
-.btn {
-    background-color: #ffaa00;
-    outline: none;
-    border: none;
-    color: #a80e0e;
-    border-radius: 1rem;
-    margin-top: 1rem;
-}
-
-.btn:hover {
-    background-color: yellow;
-    cursor: pointer;
-}
-
-#order-button:hover {
-    background-color: yellow;
-    cursor: pointer;
-}
-
-#WTEat {
-    font-family: "Roboto";
-    color: #a80e0e;
-    text-align: center;
-    margin-top: 3rem;
-}
-
-#tryFood {
-    font-family: "Montserrat";
-    text-align: center;
-}
-
-#MenuSec {
-    background-color: #ffaa00;
-}
-
-#DelMan {
-    margin: auto 10rem;
-    grid-row-start: 1;
-    grid-row-end: 9;
-    grid-column-start: 1;
-    size-adjust: auto;
-}
-
-
-/*"if you are having a meeting..." is item3 */
-
-#item3 {
-    grid-column-start: 3;
-    grid-row-start: 3;
-    grid-row-end: 3;
-    font-family: "Montserrat";
-    color: #fff;
-    margin: 0rem 10rem 0rem 4rem;
-}
-
-#clip-path2 {
-    /* -webkit-clip-path: polygon(100% 50%, 0 9%, 0 84%); */
-    clip-path: polygon(80% 50%, 0 9%, 0 100%);
-    background-color: #a80e0e;
-    color: white;
-    font-family: "Roboto";
-    width: 30rem;
-    height: 14rem;
-    padding: 1rem 0;
-    /* margin-top: 10rem;
-    margin-bottom: 0px; */
-}
-
-#clip-path2>h2 {
-    text-align: left;
-    margin-top: 6rem;
-    margin-right: 5rem;
-    margin-left: 2rem;
-}
-
-#menuContent {
-    text-align: center;
-    font-family: "Montserrat";
-    position: bottom;
-    border-bottom: 0px;
-    margin-block-end: 0rem;
-}
-
-.red {
-    background-color: #A80E0E;
-}
-
-#menuContent>a {
-    padding: 0px 3rem;
-    text-decoration: none;
-    color: rgb(78, 78, 78);
-}
-
-#Gallery,
-#recentBought {
-    margin: auto 10rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-}
-
-#OurMosPopRec {
-    font-family: "Roboto";
-    color: #a80e0e;
-    margin-top: 3rem;
-    text-align: center;
-    font-size: 2.5rem;
-}
-
-#TryOurMos {
-    font-family: "Montserrat";
-    text-align: center;
-    font-size: 1.5rem;
-}
-
-.order {
-    display: block;
-    box-shadow: rgb(78, 78, 78) 0px 0px 2.5px;
-    border-radius: 1rem;
-    font-family: "Montserrat";
-    font-weight: 200;
-    text-align: left;
-    color: black;
-    margin: 5px;
-    font-size: 16px;
-    padding: 10px;
-}
-
-.order>a {
-    text-decoration: none;
-}
-
-button:hover {
-    cursor: pointer;
-}
-
-.addToCartButton {
-    background-color: #ffaa00;
-    outline: none;
-    border: none;
-    font-size: 1rem;
-    font-weight: 200;
-    margin-bottom: 1rem;
-    margin-left: 1rem;
-    display: inline-block;
-    border-radius: 1rem;
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    width: 110px;
-    height: 30px;
-}
-
-#Testimonials>h2 {
-    color: #a80e0e;
-    font-family: "Roboto";
-    text-align: center;
-}
-
-.group {
-    display: flex;
-    /* height: 30rem; */
-}
-
-#eating-description {
-    text-align: left;
-    margin-left: 2rem;
-    vertical-align: middle;
-    margin-top: 10rem;
-    font-family: "Roboto";
-    color: rgb(78, 78, 78);
-}
-
-#Testimonials {
-    margin: 5rem 7rem 0rem;
-    display: grid;
-    grid-template: 2/ 2;
-}
-
-#dateGroup {
-    margin: 0;
-    background-color: #a80e0e;
-    text-align: center;
-    list-style: none;
-    color: white;
-    width: 100%;
-    height: 446.535px;
-}
-
-footer {
-    display: flex;
-    margin: 0 10rem;
-}
-
-h3 {
-    text-transform: uppercase;
-    color: #a80e0e;
-    font-family: "Roboto";
-    font-weight: 700;
-}
-
-#footer-logo-text {
-    width: 33%;
-    margin: 5px;
-}
-
-p {
-    font-family: "Roboto";
-    color: rgb(78, 78, 78);
-}
-
-#meals {
-    width: 90%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    row-gap: 0.25rem;
-    column-gap: 0.25rem;
-    margin-left: 5px;
-}
-
-#meals>img {
-    width: 100%;
-}
-
-#clock {
-    font-size: 1.1rem;
-    margin: auto;
-}
-
-#clock p {
-    color: white;
-    font-family: "Roboto";
-    font-weight: 100;
-}
-
-#clock a {
-    color: white;
-}
-
-#clock>li {
-    text-align: left;
-    margin: 3rem 3rem;
-}
-
-#mapPic {
-    width: 100%;
-}
-
-.float {
-    float: left;
-}
-
-.padding-0 {
-    padding: 0;
-}
-
-
-/*----- detail.html -----*/
-
-#DetailsBody {
-    padding: 0 10rem;
-}
-
-#detailNav {
-    display: flex;
-}
-
-tr {
-    border: 1px solid #ddd;
-    padding: 1rem;
-}
-
-td {
-    border: 1px solid #ddd;
-}
-
-th,
-td {
-    padding: 10px;
-    text-align: left;
-}
-
-#page {
-    padding: 10px;
-}
-
-#tapleSec {
-    font-family: "Roboto";
-}
-
-#table {
-    border: 1px solid #ddd;
-    border-collapse: collapse;
-    font-family: "Roboto";
-    font-size: 20px;
-    margin-bottom: 5rem;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-tr:hover {
-    background-color: #ddd;
-    border: #ddd 1px solid;
-}
-
-#ImgMeal1 {
-    float: left;
-    max-height: 25rem;
-    margin-right: 2rem;
-    border-radius: 15px;
-}
-
-#bestSand {
-    margin-left: 2rem;
-}
-
-#description {
-    font-family: "Roboto";
-    color: #a80e0e;
-}
-
-#revBtn {
-    background: none;
-}
-
-p {
-    font-size: 20px;
-}
-
-#des {
-    float: inline-start;
-    display: block;
-}
-
-#bestSandwich {
-    font-family: "Roboto";
-    color: #a80e0e;
-    font-weight: 200;
-}
-
-.button1 {
-    color: #a80e0e;
-    font-size: 0.7rem;
-    border-radius: 0.5rem;
-    padding-left: 0.8rem;
-    padding-right: 0.8rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    transition: all 0.3s;
-    border: 2px solid #ffaa00;
-    background-color: #fff;
-}
-
-.button1:hover {
-    background-color: #ffaa00;
-    border: 2px solid #ffaa00;
-    background-color: yellow;
-    cursor: pointer;
-}
-
-#addToCart-button {
-    margin-left: 10rem;
-    background-color: #ffaa00;
-    outline: none;
-    border: none;
-    color: #a80e0e;
-    font-size: 1rem;
-    margin-top: 7rem;
-    border-radius: 1rem;
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    transition: all 0.3s;
-}
-
-#addToCart-button:hover {
-    background-color: yellow;
-    cursor: pointer;
-}
-
-#Reviews {
-    display: none;
-    font-family: "Roboto";
-    margin-left: 7rem;
-    margin-right: 7rem;
-}
-
-#imgManEatBur {
-    margin-right: 2rem;
-    border-radius: 15px;
-    box-shadow: 1px 1px 5px rgb(151, 151, 151);
-    width: 90%;
-}
-
-.add-review {
-    width: 100%;
-    display: block;
-    clear: both;
-}
-
-#inputName {
-    display: block;
-    width: 100%;
-    border-radius: 25px;
-    background-color: #f2f2f2;
+    font-size: 2.8em;
+    color: #ffffff;
 }
 
 div {
-    margin: 5px 0;
+    width: 500px;
+    margin: auto;
 }
 
-#Contact {
-    float: inline-start;
-    width: 100%;
+.formStyle {
+    background-color: #2ecc71;
+    padding: 20px;
+    width: 400px;
+    margin-bottom: 20px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #ecf0f1;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    font-size: 1em;
+    font-weight: 100;
+    color: #ffffff;
 }
 
-#inputReview {
-    display: block;
-    width: 100%;
-    border-radius: 25px;
-    background-color: #f2f2f2;
-}
-
-.numberOfPurchases {
-    background-color: #ffaa00;
-    color: #a80e0e;
-    font-weight: bold;
-    margin: 3px;
-    padding: 2px;
-}
-
-.review-form {
-    transform: translate(120%);
-    transition: transform ease-out 1s;
-    height: 0;
-    width: 0;
-    opacity: 0;
-}
-
-.show-review {
-    transform: translate(0);
-    transition: transform ease-out 1s;
-    height: 100%;
-    width: 100%;
-    opacity: 1;
-}
-
-.submit-review {
-    transform: translate(120%);
+.formButton {
     float: right;
-    transition: all ease-out 1s;
-    height: 0;
-    position: absolute;
-    z-index: 100;
+    background-color: #ffffff;
+    display: inline-block;
+    color: #2ecc71;
+    font-size: 28px;
+    font-weight: 500;
+    padding: 6px 24px;
+    margin-top: 15px;
+    margin-right: 60px;
+    text-decoration: none;
 }
 
-.useful-links>li>a {
-    color: rgb(78, 78, 78);
+.formButton:hover {
+    background-color: #27ae60;
+    color: #ffffff;
+}
+
+.formButton:active {
+    position: relative;
+    top: 3px;
+}
+
+.translate {
+    margin-left: auto;
+    margin-top: 50px;
+    text-align: center;
+    font-weight: 100;
+    font-size: 2.8em;
+    width: 50%;
+}
+
+.translate-option {
+    width: 50%;
 }
 
 
-/* Mobile View */
+/*To remove the outline that appears on clicking the input textbox*/
 
-@media (max-width: 768px) {
-    /* ====handling the pizza deleviry guy section===== */
-    #Gallery,
-    #recentBought {
-        margin: auto 8rem;
-    }
-    #DelMan {
-        grid-row-start: 0;
-        grid-row-end: 1;
-        grid-column-start: 1;
-        size-adjust: auto;
-    }
-    #clip-path2 {
-        width: 35rem;
-        height: 14rem;
-    }
-    /*========================*/
-    /* Handling the orders section  */
-    /*========================*/
+input:focus {
+    outline: none;
 }
 
 
-/* Tablet View */
+/* To format the placeholder text color */
 
-@media only screen and (max-width: 1200px) {
-    .About>li>a {
-        display: block;
-        background: none;
-    }
-    .About>li>a {
-        border-top: 10px solid;
-        border-color: transparent;
-        padding-top: 0px;
-    }
-    #Gallery,
-    #recentBought {
-        margin: auto 3rem;
-    }
-    p,
-    #table {
-        font-size: 15px;
-    }
+ ::-webkit-input-placeholder {
+    color: #ecf0f1;
 }
 
-@media(max-width: 991px) {
-    #eating-description {
-        margin-top: 0;
-    }
+ :-moz-placeholder {
+    /* Firefox 18- */
+    color: #ecf0f1;
 }
 
-@media (min-width: 768px) and (max-width: 1200px) {
-    /* ====handling the pizza deleviry guy section==== */
-    #DelMan {
-        grid-row-start: 0;
-        grid-row-end: 1;
-        grid-column-start: 1;
-        size-adjust: auto;
-    }
-    #item3 {
-        font-size: 1.2rem;
-    }
-    #clip-path2 {
-        width: 50rem;
-        height: 14rem;
-    }
+ ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #ecf0f1;
 }
 
-@media (max-width: 850px) {
-    html,
-    body {
-        font-size: 80%;
-    }
-    #order-button {
-        margin-top: 2rem;
-    }
-    #clip-path1 {
-        margin-top: 1rem;
-    }
-}
-
-@media (max-width: 500px) {
-    html,
-    body {
-        font-size: 65%;
-    }
-    #order-button {
-        margin-top: 1rem;
-    }
-    #clip-path1 {
-        margin-top: 0.5rem;
-    }
-}
-
-.carousel-item {
-    /* background: #777; */
-    padding-bottom: 30px;
-}
-
-.carousel-indicators>li {
-    color: black;
-}
-
-.carousel-indicators {
-    margin-top: 15rem;
+ :-ms-input-placeholder {
+    color: #ecf0f1;
 }
