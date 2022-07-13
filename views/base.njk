@@ -1,196 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/style.css">
-    <title>Burger Restaurant</title>
+    <title>Hackthon</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://google-translate1.p.rapidapi.com/language/translate/v2",
+            "method": "POST",
+            "headers": {
+                "x-rapidapi-host": "google-translate1.p.rapidapi.com",
+                "x-rapidapi-key": "ca072ab588msh8b501d622df734fp153711jsn3f74cf018a34",
+                "content-type": "application/x-www-form-urlencoded"
+            },
+            "data": {
+                "source": "en",
+                "q": "Contact Form | Name | Contact Number | Email",
+                "target": ""
+            }
+
+        }
+
+
+
+        $(document).ready(function() {
+
+            $(".dropdown-item").click(function(e) {
+
+                if ($(this).attr("tolang") != 'en') {
+
+                    settings.data.target = $(this).attr("tolang");
+
+                    fetchTranslation();
+
+                    $('button').html($(this).html());
+
+                } else {
+
+                    updatePlaceholders(settings.data.q);
+
+                    $('#langSel').html("Translate to");
+
+                }
+
+            });
+
+        });
+
+        function fetchTranslation() {
+
+            $.ajax(settings).done(function(response) {
+
+                console.log(response);
+
+                var translatedText = response.data.translations[0].translatedText;
+
+                updatePlaceholders(translatedText);
+
+
+            });
+
+        }
+
+        function updatePlaceholders(updateString) {
+
+            var comp = updateString.split('|')
+
+            $('form > input').each(function(idx) {
+
+                $(this).prop("placeholder", comp[idx + 1].trim());
+
+            });
+
+            $("#formHeading").html(comp[0]);
+
+        }
+    </script>
+
+    <script>
+        const text =
+            "my med";
+        const speech = window.speechSynthesis;
+
+        const speakNow = () => {
+            // Check if Speech Synthesis is supported
+            if ("speechSynthesis" in window) {
+                const msg = new SpeechSynthesisUtterance();
+                const voices = speech.getVoices();
+                msg.voice = voices[1];
+                msg.lang = "en-US";
+                msg.text = text;
+                window.speechSynthesis.speak(msg);
+            } else {
+                // Speech Synthesis Not Supported
+                alert("Sorry, your browser doesn't support text to speech!");
+            }
+        };
+
+        document.getElementById("app").innerHTML = `
+  <h1>Check this out!</h1>
+  <div>
+   ${text}
+  </div>
+  `;
+
+        speakNow();
+    </script>
+
+
+    <style type="text/css">
+        body {
+            background-color: #2ecc71;
+            font-family: source-sans-pro, sans-serif;
+        }
+        
+        h1 {
+            margin-left: auto;
+            margin-top: 50px;
+            text-align: center;
+            font-weight: 100;
+            font-size: 2.8em;
+            color: #ffffff;
+        }
+        
+        div {
+            width: 500px;
+            margin: auto;
+        }
+        
+        .formStyle {
+            background-color: #2ecc71;
+            padding: 20px;
+            width: 400px;
+            margin-bottom: 20px;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-color: #ecf0f1;
+            border-top-style: none;
+            border-right-style: none;
+            border-left-style: none;
+            font-size: 1em;
+            font-weight: 100;
+            color: #ffffff;
+        }
+        
+        .formButton {
+            float: right;
+            background-color: #ffffff;
+            display: inline-block;
+            color: #2ecc71;
+            font-size: 28px;
+            font-weight: 500;
+            padding: 6px 24px;
+            margin-top: 15px;
+            margin-right: 60px;
+            text-decoration: none;
+        }
+        
+        .formButton:hover {
+            background-color: #27ae60;
+            color: #ffffff;
+        }
+        
+        .formButton:active {
+            position: relative;
+            top: 3px;
+        }
+        
+        .translate {
+            margin-left: auto;
+            margin-top: 50px;
+            text-align: center;
+            font-weight: 100;
+            font-size: 2.8em;
+            width: 50%;
+        }
+        
+        .translate-option {
+            width: 50%;
+        }
+        /*To remove the outline that appears on clicking the input textbox*/
+        
+        input:focus {
+            outline: none;
+        }
+        /* To format the placeholder text color */
+        
+         ::-webkit-input-placeholder {
+            color: #ecf0f1;
+        }
+        
+         :-moz-placeholder {
+            /* Firefox 18- */
+            color: #ecf0f1;
+        }
+        
+         ::-moz-placeholder {
+            /* Firefox 19+ */
+            color: #ecf0f1;
+        }
+        
+         :-ms-input-placeholder {
+            color: #ecf0f1;
+        }
+    </style>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" />
+
+
 </head>
 
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
 
-<body id="contentent">
-    <section id={{ "navbarSection" if page=="index" else "" }}>
-        <nav class=" navbar-personal pb-4 navbar navbar-expand-md bg-dark navbar-dark d-flex fixed-top justify-content-between" style=" opacity:0.61; z-index: 1;">
-            <img src="projectImages/logo-white.svg" alt="white-logo" width="100">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav About">
-                    <li>
-                        <a href="/" media=>Home</a>
-                    </li>
-                    <li>
-                        <a href={{ "#Menu" if page=="index" else "../#Menu" }}>Menu</a>
-                    </li>
-                    <li>
-                        <a href={{ "#Gallery" if page=="index" else "../#Gallery" }}>Gallery</a>
-                    </li>
-                    <li>
-                        <a href={{ "#Testimonials" if page=="index" else "../#Testimonials" }}>Tetimonials</a>
-                    </li>
-                    <li>
-                        <a href="#Contact">Contact Us</a>
-                    </li>
-                    <li class="red">
-                        <a href="#">Search
-                            </a>
-                    </li>
-                    </li>
-                    <li class="red">
-                        <a href="#">Profile
-                        </a>
-                    </li>
-                    <li class="red">
-                        <a data-toggle="modal" data-target="#exampleModal" href="#">Cart
-                            <span class="numberOfPurchases">
-                                {{ cart.length }}</span>
-                        </a>
-                    </li>
-                </ul>
             </div>
-        </nav>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Cart Content</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        {% set total = 0 %} {% for item in cart %} {% set total = total + meals[item - 1].price %}
-                        <div style="font-size: 18px" class="row padding-0">
-                            <div class="col-6">
-                                {{ meals[item - 1].title }}
-                            </div>
-                            <div class="col-6">
-                                {{ meals[item - 1].price }} SAR
-                            </div>
-                        </div>
-                        {% endfor %}
-                        <div style="font-size: 18px" class="row padding-0">
-                            <div class="col-6">
-                                Total
-                            </div>
-                            <div class="col-6">
-                                {{ total }} SAR
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button style="color: black; background-color: #a80e0e" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <form action="/sales/order" method="post">
-                            <button type="submit" class="btn btn-primary">Order Now</button>
-                            <input type="hidden" name="mealsId" value="{{ cart }}">
-                            <input type="hidden" name="total" value="{{ total }}">
-                        </form>
+            <div class="col-sm">
+                <div class="btn-group dropright translate">
+                    <button id="langSel" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Translate to
+                    </button>
+                    <div class="dropdown-menu translate-option">
+                        <a class="dropdown-item" href="#" tolang="en">English</a>
+                        <a class="dropdown-item" href="#" tolang="ar">عربي</a>
+                        <a class="dropdown-item" href="#" tolang="ur">اردو</a>
+                        <a class="dropdown-item" href="#" tolang="hi">भारतीय भाषा</a>
+                        <!--هندي-->
+                        <a class="dropdown-item" href="#" tolang="fa">فارسی</a>
+                        <!--هندي-->
+                        <a class="dropdown-item" href="#" tolang="tr">Türkçe</a>
+                        <a class="dropdown-item" href="#" tolang="ru">Русский</a>
+                        <!--الروسية-->
+                        <a class="dropdown-item" href="#" tolang="zh-CN">中文</a>
+                        <!--صيني-->
+                        <a class="dropdown-item" href="#" tolang="fr">Française</a>
+                        <!--فرنسي-->
+                        <a class="dropdown-item" href="#" tolang="id">bahasa Indonesia</a>
+                        <!--فرنسي-->
+                        <a class="dropdown-item" href="#" tolang="tl">Filipino</a>
+                        <!--فرنسي-->
+                        <a class="dropdown-item" href="#" tolang="it">italiana</a>
+                        <!--ايطالي-->
+                        <a class="dropdown-item" href="#" tolang="es">español</a>
+                        <!--اسباني-->
+                        <a class="dropdown-item" href="#" tolang="de">Deutsch</a>
+                        <!--germany-->
+                        <a class="dropdown-item" href="#" tolang="ms">Melayu</a>
+                        <!--الملايوية-->
+                        <a class="dropdown-item" href="#" tolang="bn">বাংলা</a>
+                        <!--البنغالية-->
+                        <a class="dropdown-item" href="#" tolang="ha">Hausa</a>
+                        <!--الهوساوية-->
+                        <a class="dropdown-item" href="#" tolang="ta">தமிழ்</a>
+                        <!--تاميلية-->
+                        <a class="dropdown-item" href="#" tolang="sw">kiswahili</a>
+                        <!--سواحلية-->
+                        <a class="dropdown-item" data-img_src="###.png" href="Untitled-1.html/page">صورة لغة الإشارة</a>
+
                     </div>
                 </div>
-            </div>
-        </div>
-        {% block main %}{% endblock %}
-        <section id="Contact" class="row">
-            <div class="col-sm-12 col-md-12 col-lg-6 padding-0">
-                <div class="row" id="dateGroup">
-                    <div id="clock">
-                        Phone:<strong>
-                            +966-13-860-0000</strong>
-                        <div class="row">
-                            <div style="width: 50;">
-                                <img class="col" src="/projectImages/clock.svg" alt="clock">
-                            </div>
-                            <div class="col">
-                                <p>sun-thr 11:00 - 23:00</p>
-                                <p>fri-sat 12:00 - 23:00</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div style="width: 50;">
-                                <img class="col" src="/projectImages/placeholder.svg" width="17" alt="navigation">
-                            </div>
-                            <div class="col">
-                                <p>123 KFUPM Students Mall
-                                </p>
-                                <p>Dhahran 34464
-                                </p>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#">facebook</a>
-                            <a href="#">Twitter
-                            </a>
-                            <a href="#">Instagram</a>
-                        </div>
-                    </div>
+                <h1 id="formHeading">
+                    Contact Form
+                </h1>
+                <div>
+                    <form action="">
+                        <input type="text" name="ID" class="formStyle" placeholder="Name" required />
+                        <input type="text" name="email" class="formStyle" placeholder="Contact No." required />
+                        <input type="email" name="email" class="formStyle" placeholder="Email" required />
+                    </form>
                 </div>
             </div>
+            <div class="col-sm">
+
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-6 padding-0">
-                <img src="/projectImages/map.png" alt="map" id="mapPic">
-            </div>
+        </div>
+
+
+        <form>
+            <input type="button" onclick="speakNow()" value="English voice">
+        </form>
+
+
+    </div>
+
+
+
+
+
 </body>
 
-</html>
-</section>
-<footer class="row" style="width: 90%; margin: auto;">
-    <div class="col-sm-12 col-md-12 col-lg-4 padding-0">
-        <img src="/projectImages/logo-red.svg" alt="logo" width="100">
-        <p style="font-size: 20px">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi quam eveniet consectetur error hic aspernatur nobis, iure sint accusamus explicabo odit enim eum expedita, autem odio dolores. Tempore, maxime harum! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Porro ullam esse excepturi, ex architecto
-        </p>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 padding-0">
-        <h3>useful links</h3>
-        <ul style="font-size: 20px" class="useful-links">
-            <li>
-                <a href="#navbarSection">About
-            </a>
-            </li>
-            <li>
-                <a href={{ "#Menu" if page=="index" else "../#Menu" }}>
-                Menu
-            </a>
-            </li>
-            <li>
-                <a href={{ "#Testimonials" if page=="index" else "../#Testimonials" }}>Testimonials
-            </a>
-            </li>
-            <li>
-                <a href="#Contact">Contact Us
-            </a>
-            </li>
-        </ul>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 padding-0">
-        <h3>integram feeds</h3>
-        <div id="meals">
-            <img src="/projectImages/meal1.png" alt="meal1" />
-            <img src="/projectImages/meal2.png" alt="meal2" />
-            <img src="/projectImages/meal3.png" alt="meal3" />
-            <img src="/projectImages/meal4.png" alt="meal4" />
-            <img src="/projectImages/meal5.png" alt="meal5" />
-            <img src="/projectImages/meal6.png" alt="meal6" />
-        </div>
-    </div>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-<script src="/app.js"></script>
-</body>
+
 
 </html>
