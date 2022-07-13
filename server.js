@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const meal_router = require('./routers/meal_router');
+const language_router = require('./routers/language_router');
 const nunjucks = require('nunjucks');
 const cookieParser = require("cookie-parser")
 const bodyParser = require('body-parser');
@@ -14,7 +14,7 @@ nunjucks.configure('./views', {
 
 // app.use(cookieParser())
 // app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/', meal_router);
+app.use('/', language_router);
 // app.use('/sales/', sales_router);
 
 // app.use(express.static(path.join(__dirname, '../punpm root -gblic')));
