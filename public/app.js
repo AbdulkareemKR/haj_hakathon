@@ -5,7 +5,7 @@ var settings = {
     "method": "POST",
     "headers": {
         "x-rapidapi-host": "google-translate1.p.rapidapi.com",
-        "x-rapidapi-key": "ca072ab588msh8b501d622df734fp153711jsn3f74cf018a34",
+        "x-rapidapi-key": "3fd319fca1msh35698ec26a4bcefp1d1ad3jsn25b9784846a2",
         "content-type": "application/x-www-form-urlencoded"
     },
     "data": {
