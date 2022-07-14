@@ -1,6 +1,6 @@
 const sqlite = require('better-sqlite3');
 const path = require('path');
-const db = new sqlite(path.resolve('restaurant.db'), { fileMustExist: true });
+const db = new sqlite(path.resolve('haj.db'), { fileMustExist: true });
 
 const getMealById = (id) => {
     return db.prepare('SELECT * FROM meals WHERE id = ?').get(id);
