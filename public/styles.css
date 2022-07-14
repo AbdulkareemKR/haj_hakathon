@@ -1,19 +1,32 @@
-#navigation>li>a {
-    min-width: 200px;
-    color: white;
+#navigation > li > a {
+  min-width: 200px;
+  color: white;
 }
 
-#navigation>li {
-    min-width: 200px;
-    max-height: 40px;
-    color: white;
+#navigation > li {
+  min-width: 200px;
+  max-height: 40px;
+  color: white;
 }
 
 .header-area .main-header .main-menu ul li a {
-    padding: 10px;
-    margin: 10px 30px;
+  padding: 10px;
+  margin: 10px 30px;
 }
 
 .menu-main {
-    padding: 10px 20px 30px;
+  padding: 10px 20px 30px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 45px;
+  text-align: center;
+}
+
+.input-field {
+  color: #1f2b7b;
+  font-weight: 300;
+  font-size: 16px;
 }
