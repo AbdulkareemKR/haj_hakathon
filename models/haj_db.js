@@ -6,8 +6,8 @@ const getMealById = (id) => {
     return db.prepare('SELECT * FROM meals WHERE id = ?').get(id);
 }
 
-const getAllMeals = () => {
-    return db.prepare('SELECT * FROM meals').all();
+const getAllLanguages = () => {
+    return db.prepare('SELECT * FROM language').all();
 }
 
 const getMealReviews = (meal_id) => {
@@ -34,4 +34,4 @@ review = { reviewer_name: "abdullah", city: "Riyadh", date: "2015-34-43", rating
 
 
 // addMealReview(review);
-module.exports = { getAllMeals, getMealById, getMealReviews, addMealReview, getMealAVGRating, getAllAVGRating };
+module.exports = { getAllLanguages, getMealById, getMealReviews, addMealReview, getMealAVGRating, getAllAVGRating };
