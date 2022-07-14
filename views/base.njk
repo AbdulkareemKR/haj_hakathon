@@ -22,42 +22,9 @@
                         Translate to
                     </button>
                     <div class="dropdown-menu translate-option">
-                        <a class="dropdown-item" href="#" tolang="en">English</a>
-                        <a class="dropdown-item" href="#" tolang="ar">عربي</a>
-                        <a class="dropdown-item" href="#" tolang="ur">اردو</a>
-                        <a class="dropdown-item" href="#" tolang="hi">भारतीय भाषा</a>
-                        <!--هندي-->
-                        <a class="dropdown-item" href="#" tolang="fa">فارسی</a>
-                        <!--هندي-->
-                        <a class="dropdown-item" href="#" tolang="tr">Türkçe</a>
-                        <a class="dropdown-item" href="#" tolang="ru">Русский</a>
-                        <!--الروسية-->
-                        <a class="dropdown-item" href="#" tolang="zh-CN">中文</a>
-                        <!--صيني-->
-                        <a class="dropdown-item" href="#" tolang="fr">Française</a>
-                        <!--فرنسي-->
-                        <a class="dropdown-item" href="#" tolang="id">bahasa Indonesia</a>
-                        <!--فرنسي-->
-                        <a class="dropdown-item" href="#" tolang="tl">Filipino</a>
-                        <!--فرنسي-->
-                        <a class="dropdown-item" href="#" tolang="it">italiana</a>
-                        <!--ايطالي-->
-                        <a class="dropdown-item" href="#" tolang="es">español</a>
-                        <!--اسباني-->
-                        <a class="dropdown-item" href="#" tolang="de">Deutsch</a>
-                        <!--germany-->
-                        <a class="dropdown-item" href="#" tolang="ms">Melayu</a>
-                        <!--الملايوية-->
-                        <a class="dropdown-item" href="#" tolang="bn">বাংলা</a>
-                        <!--البنغالية-->
-                        <a class="dropdown-item" href="#" tolang="ha">Hausa</a>
-                        <!--الهوساوية-->
-                        <a class="dropdown-item" href="#" tolang="ta">தமிழ்</a>
-                        <!--تاميلية-->
-                        <a class="dropdown-item" href="#" tolang="sw">kiswahili</a>
-                        <!--سواحلية-->
-                        <a class="dropdown-item" data-img_src="###.png" href="Untitled-1.html/page">صورة لغة الإشارة</a>
-
+                        {% for language in languages %}
+                        <a class="dropdown-item" href="#" tolang="{{language.value}}">{{language.name}}</a>
+                         {% endfor %}
                     </div>
                 </div>
                 <h1 id="formHeading">
