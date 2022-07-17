@@ -1,0 +1,46 @@
+{% extends "base.njk" %}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+            <div class="btn-group dropright translate">
+                <button id="langSel" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Translate to
+                </button>
+                <div class="dropdown-menu translate-option">
+                    {% for language in languages %}
+                    <a class="dropdown-item" href="#" tolang="{{language.value}}">{{language.name}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <h1 id="formHeading">
+                Contact Form
+            </h1>
+            <div>
+                <form acion="">
+                    <input type="text" name="ID" class="translation" placeholder="Name" required />
+                    <input type="text" name="email" class="translation" placeholder="Contact No." required />
+                    <input type="email" name="email" class="translation" placeholder="Email" required />
+                    <input type="email" name="" class="translation" placeholder="my name is mohammed" required />
+                    <p class="translation"> good</p>
+                    <textarea class="translation" placeholder="good" required></textarea>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+
+
+    <form>
+        <input type="button" onclick="speakNow()" value="English voice">
+    </form>
+</div>
+
+
+{% endblock %}

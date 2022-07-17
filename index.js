@@ -4,6 +4,8 @@ const language_router = require("./routers/language_router");
 const nunjucks = require("nunjucks");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+var livereload = require("livereload");
+var connectLiveReload = require("connect-livereload");
 
 nunjucks.configure("./views", {
   autoescape: true,
@@ -15,6 +17,14 @@ nunjucks.configure("./views", {
 app.use("/", language_router);
 
 app.use(express.static("public"));
+
+app.use(connectLiveReload());
+const liveReloadServer = livereload.createServer();
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh("/");
+  }, 100);
+});
 
 app.listen(process.env.PORT || 3000, function () {
   console.log(

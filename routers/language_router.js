@@ -4,8 +4,10 @@ const hajDB = require("../models/haj_db");
 
 // define the home page route
 router.get("/", function (req, res) {
-  let data = {};
-  res.render("index.njk", data);
+  let data = {
+    languages: hajDB.getAllLanguages(),
+  };
+  res.render("temp.njk", data);
 });
 
 // router.get("/", function (req, res) {
