@@ -1,141 +1,139 @@
 {% extends "base.njk" %}
 {% block main %}
-    <main>
-        <!--? slider Area Start-->
-        <div class="slider-area position-relative">
-            <div class="slider-active">
-                <!-- Single Slider -->
-                <div class="container" style="text-align: center">
+<main>
+    <!--? slider Area Start-->
+    <div class="slider-area position-relative">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="container" style="text-align: center">
 
 
-                </div>
             </div>
+        </div>
 
 
-            <!--? Contact form Start -->
-            <div class="contact-form-main">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-7 col-lg-7">
-                            <div class="form-wrapper">
-                                <!--Section Tittle  -->
-                                <div class="form-tittle">
-                                    <div class="section-tittle section-tittle2">
-                                        <h1 class="cd-headline letters scale title"> Find Your
-                                            <strong class="cd-words-wrapper">
-                                                <b class="is-visible">Receipt</b>
-                                                <b>Receipt</b>
-                                            </strong>
-                                        </h1>
+        <!--? Contact form Start -->
+        <div class="contact-form-main">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-7">
+                        <div class="form-wrapper">
+                            <!--Section Tittle  -->
+                            <div class="form-tittle">
+                                <div class="section-tittle section-tittle2">
+                                    <h1 class="cd-headline letters scale title"> Find Your
+                                        <strong class="cd-words-wrapper">
+                                            <b class="is-visible">Receipt</b>
+                                            <b>Receipt</b>
+                                        </strong>
+                                    </h1>
+                                </div>
+                            </div>
+
+                            <!--End Section Tittle  -->
+                            <form id="contact-form" action="#" method="POST">
+                                <div class="col">
+                                    <div class="row-12">
+                                        <div class="form-box user-icon mb-30">
+                                            <input class="input-field" type="text" name="name" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="row-12">
+                                        <div class="form-box email-icon mb-30">
+                                            <input class="input-field" type="text" name="email" placeholder="Phone">
+                                        </div>
+                                    </div>
+                                    <div class="row-12 input-field">
+                                        <select class="mb-30" name="cars" id="cars">
+                                            <option value="volvo">Volvo</option>
+                                            <option value="saab">Saab</option>
+                                            <option value="mercedes">Mercedes</option>
+                                            <option value="audi">Audi</option>
+                                        </select>
+                                    </div>
+                                    <div class="row-12">
+                                        <div class="form-box subject-icon mb-30">
+                                            <input class="input-field" type="Email" name="subject" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="row-12">
+                                        <div class="form-box message-icon mb-30">
+                                            <input type="textarea" rows="4" class="input-field" name="message"
+                                                id="message" placeholder="Message"></input>
+                                        </div>
+                                        <div class="submit-info">
+                                            <button class="btn" type="submit">Submit Now <i class="ti-arrow-right"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                                <!--End Section Tittle  -->
-                                <form id="contact-form" action="#" method="POST">
-                                    <div class="col">
-                                        <div class="row-12">
-                                            <div class="form-box user-icon mb-30">
-                                                <input class="input-field" type="text" name="name" placeholder="Name">
-                                            </div>
-                                        </div>
-                                        <div class="row-12">
-                                            <div class="form-box email-icon mb-30">
-                                                <input class="input-field" type="text" name="email" placeholder="Phone">
-                                            </div>
-                                        </div>
-                                        <div class="row-12 input-field">
-                                            <select class="mb-30" name="cars" id="cars">
-                                                <option value="volvo">Volvo</option>
-                                                <option value="saab">Saab</option>
-                                                <option value="mercedes">Mercedes</option>
-                                                <option value="audi">Audi</option>
-                                            </select>
-                                        </div>
-                                        <div class="row-12">
-                                            <div class="form-box subject-icon mb-30">
-                                                <input class="input-field" type="Email" name="subject"
-                                                    placeholder="Email">
-                                            </div>
-                                        </div>
-                                        <div class="row-12">
-                                            <div class="form-box message-icon mb-30">
-                                                <input type="textarea" rows="4" class="input-field" name="message"
-                                                    id="message" placeholder="Message"></input>
-                                            </div>
-                                            <div class="submit-info">
-                                                <button class="btn" type="submit">Submit Now <i
-                                                        class="ti-arrow-right"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+        </div>
+        <!-- Contact form End -->
+
+        <!--? department_area_start  -->
+        <div class="department_area section-padding2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="depart_ment_tab mb-30">
+                            <!-- Tabs Buttons -->
+                            <ul class="nav" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                        aria-controls="home" aria-selected="true">
+                                        <i class="flaticon-teeth"></i>
+                                        <h4>Dentistry</h4>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                        aria-controls="profile" aria-selected="false">
+                                        <i class="flaticon-cardiovascular"></i>
+                                        <h4>Cardiology</h4>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                                        aria-controls="contact" aria-selected="false">
+                                        <i class="flaticon-ear"></i>
+                                        <h4>ENT Specialists</h4>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="Astrology-tab" data-toggle="tab" href="#Astrology"
+                                        role="tab" aria-controls="contact" aria-selected="false">
+                                        <i class="flaticon-bone"></i>
+                                        <h4>Astrology</h4>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="Neuroanatomy-tab" data-toggle="tab" href="#Neuroanatomy"
+                                        role="tab" aria-controls="contact" aria-selected="false">
+                                        <i class="flaticon-lung"></i>
+                                        <h4>Neuroanatomy</h4>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="Blood-tab" data-toggle="tab" href="#Blood" role="tab"
+                                        aria-controls="contact" aria-selected="false">
+                                        <i class="flaticon-cell"></i>
+                                        <h4>Blood Screening</h4>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <!-- Contact form End -->
+        </div>
+        <!-- depertment area end  -->
 
-            <!--? department_area_start  -->
-            <div class="department_area section-padding2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="depart_ment_tab mb-30">
-                                <!-- Tabs Buttons -->
-                                <ul class="nav" id="myTab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
-                                            role="tab" aria-controls="home" aria-selected="true">
-                                            <i class="flaticon-teeth"></i>
-                                            <h4>Dentistry</h4>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile"
-                                            role="tab" aria-controls="profile" aria-selected="false">
-                                            <i class="flaticon-cardiovascular"></i>
-                                            <h4>Cardiology</h4>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact"
-                                            role="tab" aria-controls="contact" aria-selected="false">
-                                            <i class="flaticon-ear"></i>
-                                            <h4>ENT Specialists</h4>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="Astrology-tab" data-toggle="tab" href="#Astrology"
-                                            role="tab" aria-controls="contact" aria-selected="false">
-                                            <i class="flaticon-bone"></i>
-                                            <h4>Astrology</h4>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="Neuroanatomy-tab" data-toggle="tab" href="#Neuroanatomy"
-                                            role="tab" aria-controls="contact" aria-selected="false">
-                                            <i class="flaticon-lung"></i>
-                                            <h4>Neuroanatomy</h4>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="Blood-tab" data-toggle="tab" href="#Blood" role="tab"
-                                            aria-controls="contact" aria-selected="false">
-                                            <i class="flaticon-cell"></i>
-                                            <h4>Blood Screening</h4>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- depertment area end  -->
-
-    </main>
-    {% endblock %}
+</main>
+{% endblock %}

@@ -7,7 +7,7 @@ router.get("/", function (req, res) {
   let data = {
     languages: hajDB.getAllLanguages(),
   };
-  res.render("temp.njk", data);
+  res.render("patient.njk", data);
 });
 
 // router.get("/", function (req, res) {
