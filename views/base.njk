@@ -43,18 +43,19 @@
                                 <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
-                        <div class="btn-group dropdown translate language-position">
-                            <button id="langSel" type="button" class="dropdown-toggle language-button"
+
+                        <div class="dropdown language-position">
+                            <button id="dropdownMenuButton" type="button" class="dropdown-toggle language-button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-language language-icon"></i>.
+                                <i class="fas fa-language language-icon"></i>
                             </button>
-                            <div class="dropdown-menu translate-option">
+                            <div class="dropdown-menu">
                                 {% for language in languages %}
                                 <a class="dropdown-item" href="#" tolang="{{language.value}}">{{language.name}}</a>
                                 {% endfor %}
                             </div>
                         </div>
-                        <div class=" col-md-10">
+                        <div class=" col-md-8">
                             <div class="menu-main d-flex align-items-center justify-content-center">
                                 <!-- Main-menu -->
                                 <div class="main-menu f-right d-none d-lg-block">

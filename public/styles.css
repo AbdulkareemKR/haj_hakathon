@@ -49,4 +49,9 @@
 
 .language-icon {
   font-size: 50px;
+  cursor: pointer;
+}
+
+.dropdown-toggle::after {
+  display: none;
 }
