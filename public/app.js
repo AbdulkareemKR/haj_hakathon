@@ -1,3 +1,16 @@
+textList = "";
+$(".translation").each(function (i, item) {
+  if ($(this).html() != "") {
+    cleaned = $(this)
+      .text()
+      .replace(/\r?\n|\s/g, "");
+    textList += cleaned + " | ";
+  } else {
+    textList += item.placeholder + " | ";
+  }
+});
+
+console.log(textList);
 var settings = {
   async: true,
   crossDomain: true,
@@ -5,18 +18,38 @@ var settings = {
   method: "POST",
   headers: {
     "x-rapidapi-host": "google-translate1.p.rapidapi.com",
-    "x-rapidapi-key": "3fd319fca1msh35698ec26a4bcefp1d1ad3jsn25b9784846a2",
+    "x-rapidapi-key": "53c48e08d0msh527d7daeb07ca0bp1cadcbjsn7537f63869ba",
     "content-type": "application/x-www-form-urlencoded",
   },
   data: {
     source: "en",
-    q: "Contact Form | Name | Contact Number | Email | play | good",
+    translationText:
+      "Contact Form | Name | Contact Number | Email | play | good",
     target: "",
   },
 };
 
+var userLang = navigator.language || navigator.userLanguage;
+
+console.log(userLang + " aaaa");
+const languageCode = userLang.split("-")[0];
+console.log(languageCode);
+
+// if (languageCode != "en") {
+//   settings.data.target = languageCode;
+
+//   fetchTranslation();
+
+//   $("button").html($(this).html());
+// } else {
+//   updatePlaceholders(settings.data.q);
+
+//   $("#langSel").html("Translate to");
+// }
+
 $(document).ready(function () {
   $(".dropdown-item").click(function (e) {
+    // to get the abbreviation of the desired language
     if ($(this).attr("tolang") != "en") {
       settings.data.target = $(this).attr("tolang");
 
@@ -24,16 +57,15 @@ $(document).ready(function () {
 
       $("button").html($(this).html());
     } else {
-      updatePlaceholders(settings.data.q);
-
-      $("#langSel").html("Translate to");
+      console.log();
+      updatePlaceholders(settings.data.translationText);
     }
   });
 });
 
 function fetchTranslation() {
   $.ajax(settings).done(function (response) {
-    console.log(response);
+    console.log("res" + response);
 
     var translatedText = response.data.translations[0].translatedText;
 
@@ -43,12 +75,15 @@ function fetchTranslation() {
 
 function updatePlaceholders(updateString) {
   var comp = updateString.split("|");
+  console.log(comp);
 
   $(".translation").each(function (idx) {
-    $(this).prop("placeholder", comp[idx + 1].trim());
+    if ($(this).html() != "") {
+      $(this).html(comp[idx + 1].trim());
+    } else {
+      $(this).prop("placeholder", comp[idx + 1].trim());
+    }
   });
-
-  $("#formHeading").html(comp[0]);
 }
 
 // Speech Section
@@ -69,12 +104,5 @@ const speakNow = () => {
     alert("Sorry, your browser doesn't support text to speech!");
   }
 };
-
-document.getElementById("app").innerHTML = `
-  <h1>Check this out!</h1>
-  <div>
-   ${text}
-  </div>
-  `;
 
 speakNow();
