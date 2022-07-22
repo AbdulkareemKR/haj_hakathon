@@ -43,6 +43,17 @@
                                 <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
+                        <div class="btn-group dropdown translate language-position">
+                            <button id="langSel" type="button" class="dropdown-toggle language-button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-language language-icon"></i>.
+                            </button>
+                            <div class="dropdown-menu translate-option">
+                                {% for language in languages %}
+                                <a class="dropdown-item" href="#" tolang="{{language.value}}">{{language.name}}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
                         <div class=" col-md-10">
                             <div class="menu-main d-flex align-items-center justify-content-center">
                                 <!-- Main-menu -->
@@ -51,9 +62,9 @@
                                         <ul id="navigation">
                                             <li> <a href="#" class="btn header-btn">patients</a></li>
                                             <li><a href="#" class="btn header-btn">Doctors</a></li>
-             
                                         </ul>
                                     </nav>
+
                                 </div>
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
                                 </div>
@@ -178,7 +189,7 @@
 
     <!-- Jquery Plugins, main Jquery -->
     <script src="./assets/js/main.js"></script>
-        <script src="./app.js">
+    <script src="./app.js">
     </script>
 
 </body>

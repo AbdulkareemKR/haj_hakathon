@@ -30,3 +30,23 @@
   font-weight: 300;
   font-size: 16px;
 }
+
+.language-position {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  height: 50px;
+  width: 80px;
+}
+
+.language-button {
+  background-color: white;
+  color: #1462f3;
+  border: none;
+  height: 50px;
+  width: 80px;
+}
+
+.language-icon {
+  font-size: 50px;
+}
