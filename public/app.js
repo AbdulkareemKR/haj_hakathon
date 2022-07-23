@@ -1,7 +1,5 @@
 let currentLanguage = "en";
 
-readPageText();
-
 function readPageText() {
   textList = "";
   $(".translation").each(function (i, item) {
@@ -22,7 +20,6 @@ function readPageText() {
   return textList;
 }
 
-console.log(textList);
 var settings = {
   async: true,
   crossDomain: true,
@@ -43,47 +40,43 @@ var settings = {
 var userLang = navigator.language || navigator.userLanguage;
 
 const languageCode = userLang.split("-")[0];
+console.log(languageCode);
+readPageText();
+beginTranslation(languageCode);
 
-// if (languageCode != "en") {
-//   settings.data.target = languageCode;
+function beginTranslation(language) {
+  if (settings.data.source == "en") {
+    settings.data.q = readPageText();
+  }
+  if (language != "en") {
+    settings.data.target = language;
+    currentLanguage = settings.data.target;
+    if (settings.data.target == "ar") {
+      $(".translation").css("text-align", "right");
+      $(".t-align").css("text-align", "right");
+    } else {
+      $(".translation").css("text-align", "left");
+      $(".t-align").css("text-align", "left");
+    }
+    fetchTranslation();
 
-//   fetchTranslation();
-
-//   $("button").html($(this).html());
-// } else {
-//   updatePlaceholders(settings.data.q);
-
-//   $("#langSel").html("Translate to");
-// }
+    $("button").html($(this).html());
+  } else {
+    console.log();
+    updatePlaceholders(settings.data.q);
+  }
+}
 
 $(document).ready(function () {
   $(".dropdown-item").click(function (e) {
     console.log("translate ");
 
     // to get the abbreviation of the desired language
-    if ($(this).attr("tolang") != "en") {
-      settings.data.target = $(this).attr("tolang");
-      settings.data.source = currentLanguage;
-      currentLanguage = settings.data.target;
-      if (settings.data.target == "ar") {
-        $(".translation").css("text-align", "right");
-        $(".t-align").css("text-align", "right");
-      } else {
-        $(".translation").css("text-align", "left");
-        $(".t-align").css("text-align", "left");
-      }
-      fetchTranslation();
-
-      $("button").html($(this).html());
-    } else {
-      console.log();
-      updatePlaceholders(settings.data.q);
-    }
+    beginTranslation($(this).attr("tolang"));
   });
 });
 
 function fetchTranslation() {
-  settings.data.q = readPageText();
   $.ajax(settings).done(function (response) {
     console.log("res" + response);
 
@@ -119,17 +112,7 @@ async function showReceipt() {
     success: function (response) {
       responseJson = JSON.parse(response);
       console.log(responseJson);
-
-      output += `<div class="form-box mb-30">
-                   <input id="userId" class="input-field" type="text" name="name"
-                       placeholder="Enter Your ID">
-                 </div>
-                 <a onClick="showReceipt()" class="btn result-button">Show</a>
-                 <hr>`;
-
       responseJson.receipt.forEach((item) => {
-        console.log(item + " ffffffffffffffffff");
-
         output += `
                                       <div class="row-12">
                                           <div class="form-box mb-30">
@@ -179,6 +162,9 @@ async function showReceipt() {
                                    `;
       });
       document.querySelector("#receipt-info").innerHTML = output;
+      // read page text because it has been changed
+      settings.data.q = readPageText();
+      beginTranslation(currentLanguage);
     },
   });
 }
@@ -189,15 +175,15 @@ function navigateToReceipt() {
 }
 
 // Speech Section
-const text = "my med";
-const speech = window.speechSynthesis;
 
 const speakNow = () => {
   // Check if Speech Synthesis is supported
+  const text = "hello";
+  const speech = window.speechSynthesis;
   if ("speechSynthesis" in window) {
-    const msg = new SpeechSynthesisUtterance();
+    const msg = new SpeechSynthesisUtterance("hello");
     const voices = speech.getVoices();
-    msg.voice = voices[1];
+    msg.voice = voices[0];
     msg.lang = "en-US";
     msg.text = text;
     window.speechSynthesis.speak(msg);
@@ -206,5 +192,3 @@ const speakNow = () => {
     alert("Sorry, your browser doesn't support text to speech!");
   }
 };
-
-speakNow();
