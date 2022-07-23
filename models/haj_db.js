@@ -2,8 +2,8 @@ const sqlite = require("better-sqlite3");
 const path = require("path");
 const db = new sqlite(path.resolve("haj.db"), { fileMustExist: true });
 
-const getMealById = (id) => {
-  return db.prepare("SELECT * FROM meals WHERE id = ?").get(id);
+const getReceiptById = (id) => {
+  return db.prepare("SELECT * FROM receipt WHERE id = ?").get(id);
 };
 
 const getAllLanguages = () => {
@@ -60,7 +60,7 @@ review = {
 // addMealReview(review);
 module.exports = {
   getAllLanguages,
-  getMealById,
+  getReceiptById,
   getMealReviews,
   addMealReview,
   getMealAVGRating,
