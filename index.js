@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-const language_router = require("./routers/language_router");
-const receipt_router = require("./routers/receipt_router");
+const patient_router = require("./routers/patient_router");
+const doctor_router = require("./routers/doctor_router");
 const nunjucks = require("nunjucks");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
@@ -13,8 +13,8 @@ nunjucks.configure("./views", {
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/", language_router);
-// app.use("/receipt", receipt_router);
+app.use("/", patient_router);
+app.use("/doctor", doctor_router);
 
 app.use(express.static("public"));
 

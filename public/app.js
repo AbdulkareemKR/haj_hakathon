@@ -183,6 +183,11 @@ async function showReceipt() {
   });
 }
 
+function navigateToReceipt() {
+  $("#signin").addClass("hide");
+  $("#make-receipt").removeClass("hide");
+}
+
 // Speech Section
 const text = "my med";
 const speech = window.speechSynthesis;

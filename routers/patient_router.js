@@ -5,6 +5,7 @@ const hajDB = require("../models/haj_db");
 // define the home page route
 router.get("/", function (req, res) {
   let data = {
+    page: "patient",
     languages: hajDB.getAllLanguages(),
   };
   res.render("patient.njk", data);

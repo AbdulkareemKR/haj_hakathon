@@ -93,3 +93,11 @@
   display: inline;
   font-size: 16px;
 }
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: none;
+}
