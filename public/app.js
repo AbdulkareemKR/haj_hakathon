@@ -1,17 +1,24 @@
-textList = "";
-$(".translation").each(function (i, item) {
-  if (i != 0) {
-    textList += " | ";
-  }
-  if ($(this).html() != "") {
-    cleaned = $(this)
-      .text()
-      .replace(/\r?\n|\s/g, "");
-    textList += cleaned;
-  } else {
-    textList += item.placeholder;
-  }
-});
+readPageText();
+
+function readPageText() {
+  textList = "";
+  $(".translation").each(function (i, item) {
+    if (i != 0) {
+      textList += " | ";
+    }
+    if ($(this).html() != "") {
+      cleaned = $(this)
+        .text()
+        .replace(/\r?\n|/g, "");
+      console.log($(this).text());
+      textList += cleaned;
+    } else {
+      textList += item.placeholder;
+    }
+  });
+  console.log(textList);
+  return textList;
+}
 
 console.log(textList);
 var settings = {
@@ -21,21 +28,19 @@ var settings = {
   method: "POST",
   headers: {
     "x-rapidapi-host": "google-translate1.p.rapidapi.com",
-    "x-rapidapi-key": "be22973d11mshb2d2484c0dba20dp15577cjsn0115664a019a",
+    "x-rapidapi-key": "54d1674a31msh44bbfb801ddeceap13b331jsn3efa5250559a",
     "content-type": "application/x-www-form-urlencoded",
   },
   data: {
     source: "en",
-    q: textList,
+    q: readPageText(),
     target: "",
   },
 };
 
 var userLang = navigator.language || navigator.userLanguage;
 
-console.log(userLang + " aaaa");
 const languageCode = userLang.split("-")[0];
-console.log(languageCode);
 
 // if (languageCode != "en") {
 //   settings.data.target = languageCode;
@@ -50,13 +55,20 @@ console.log(languageCode);
 // }
 
 $(document).ready(function () {
-  console.log("here ");
-
   $(".dropdown-item").click(function (e) {
+    console.log("translate ");
+    settings.data.q = readPageText();
+
     // to get the abbreviation of the desired language
     if ($(this).attr("tolang") != "en") {
       settings.data.target = $(this).attr("tolang");
-
+      if (settings.data.target == "ar") {
+        $(".translation").css("text-align", "right");
+        $(".t-align").css("text-align", "right");
+      } else {
+        $(".translation").css("text-align", "left");
+        $(".t-align").css("text-align", "left");
+      }
       fetchTranslation();
 
       $("button").html($(this).html());
@@ -92,34 +104,78 @@ function updatePlaceholders(updateString) {
 }
 
 async function showReceipt() {
-  id = $("#userId").text();
-  console.log("here " + id);
-  await makeAjaxCall("GET", `/receipt/${id}/`, "", (err, resp) => {
-    if (!err) {
-      let output = resp.length > 0 ? "" : "<h2>No Comments</h2>";
-      output += ` <form class="col-lg-6" id="commentForm">
-                                <input type="hidden" name="flower_id" value="${id}">
-                                <input type="text" name="author" class="form-control" placeholder="Your name" required>
-                                <textarea name="comment" class="form-control" cols="30" rows="5" placeholder="Your comment" required></textarea>
-                                <div>
-                                    <button name="submit"   type="button" onclick="sendForm()" class="btn btn-outline-primary float-end" >Add A Comment</button>
-                                </div>
-                            </form>`;
-      if (resp.length > 0) {
-        resp.forEach((comment) => {
-          output += `
-                       <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title"> ${comment["author"]}</h4>
-                                <p class="card-text"> ${comment["comment"]}</p>
-                            </div>
-                        </div>
-                      </div>`;
-        });
-      }
-      document.querySelector("#commentsRow").innerHTML = output;
-    }
+  var id = $("#userId").val();
+  console.log(id);
+  let output = "";
+  $.ajax({
+    //create an ajax request to display.php
+    type: "GET",
+    url: `/receipt/${id}`,
+    dataType: "html", //expect html to be returned
+    success: function (response) {
+      responseJson = JSON.parse(response);
+      console.log(responseJson);
+
+      output += `<div class="form-box mb-30">
+                   <input id="userId" class="input-field" type="text" name="name"
+                       placeholder="Enter Your ID">
+                 </div>
+                 <a onClick="showReceipt()" class="btn result-button">Show</a>
+                 <hr>`;
+
+      responseJson.receipt.forEach((item) => {
+        console.log(item + " ffffffffffffffffff");
+
+        output += `
+                                      <div class="row-12">
+                                          <div class="form-box mb-30">
+                                              <p ><p class="treatment-title translation">Receipt Date: </p> <p class="treatment-description translation">  ${item.date}</p></p>
+                                          </div>
+                                      </div>
+                                      <div class="row-12">
+                                          <div class="form-box mb-30">
+                                              <p class="translation translation"><p class="treatment-title translation">Patient Name:</p> <p class="treatment-description translation">  ${item.patientName} </p></p>
+                                          </div>
+                                      </div>
+                                      <div class="row-12">
+                                          <div class="form-box mb-30">
+                                              <p ><p class="treatment-title translation">Patient ID:</p> <p class="treatment-description translation">  ${item.patientId} </p></p>
+                                          </div>
+                                      </div>
+                                      <div class="row-12">
+                                          <div class="form-box mb-30">
+                                              <p class="t-align"><p class="treatment-title translation">Drug Name:</p> <p class="treatment-description t-align">  ${item.drugName} </p></p>
+                                          </div>
+                                      </div>
+                                      <div class="row-12">
+                                          <div class="form-box mb-30">
+                                              <p ><p class="treatment-title translation">Instructions:</p> <p class="treatment-description translation">  Take ${item.doseAmount} ${item.amountType},
+                                                      &nbsp;${item.takingMethod}, ${item.dosesPerDay} times per day, for ${item.duration}
+                                                      day/days.
+                                              </p></p>
+                                          </div>
+                                      </div>
+                                      <div class="row-12">
+                                          <div class="form-box mb-30">
+                                              <p ><p class="treatment-title translation">Duration of The Treatment:</p> <p class="treatment-description translation">   ${item.duration} days</p></p>
+                                          </div>
+                                      </div>
+                                      <div class="row-12">
+                                          <div class="form-box mb-30">
+                                              <p > <p class="treatment-title translation">Dose Taking Time:</p> <p class="treatment-description translation">  ${item.dosesTime}</p></p>
+                                          </div>
+                                      </div>
+                                      <div class="row-12">
+                                          <div class="form-box mb-30">
+                                              <p ><p class="treatment-title translation">Additional Comments:</p> <p class="treatment-description translation"> ${item.comment}</p></p>
+                                          </div>
+                                      </div>
+                                      <hr>
+                                      </br>
+                                   `;
+      });
+      document.querySelector("#receipt-info").innerHTML = output;
+    },
   });
 }
 
