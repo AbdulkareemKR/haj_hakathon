@@ -5,7 +5,6 @@ const receipt_router = require("./routers/receipt_router");
 const nunjucks = require("nunjucks");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-var connectLiveReload = require("connect-livereload");
 
 nunjucks.configure("./views", {
   autoescape: true,
