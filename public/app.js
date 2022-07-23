@@ -1,12 +1,15 @@
 textList = "";
 $(".translation").each(function (i, item) {
+  if (i != 0) {
+    textList += " | ";
+  }
   if ($(this).html() != "") {
     cleaned = $(this)
       .text()
       .replace(/\r?\n|\s/g, "");
-    textList += cleaned + " | ";
+    textList += cleaned;
   } else {
-    textList += item.placeholder + " | ";
+    textList += item.placeholder;
   }
 });
 
@@ -18,13 +21,12 @@ var settings = {
   method: "POST",
   headers: {
     "x-rapidapi-host": "google-translate1.p.rapidapi.com",
-    "x-rapidapi-key": "53c48e08d0msh527d7daeb07ca0bp1cadcbjsn7537f63869ba",
+    "x-rapidapi-key": "be22973d11mshb2d2484c0dba20dp15577cjsn0115664a019a",
     "content-type": "application/x-www-form-urlencoded",
   },
   data: {
     source: "en",
-    translationText:
-      "Contact Form | Name | Contact Number | Email | play | good",
+    q: textList,
     target: "",
   },
 };
@@ -48,6 +50,8 @@ console.log(languageCode);
 // }
 
 $(document).ready(function () {
+  console.log("here ");
+
   $(".dropdown-item").click(function (e) {
     // to get the abbreviation of the desired language
     if ($(this).attr("tolang") != "en") {
@@ -58,7 +62,7 @@ $(document).ready(function () {
       $("button").html($(this).html());
     } else {
       console.log();
-      updatePlaceholders(settings.data.translationText);
+      updatePlaceholders(settings.data.q);
     }
   });
 });
@@ -77,17 +81,19 @@ function updatePlaceholders(updateString) {
   var comp = updateString.split("|");
   console.log(comp);
 
-  $(".translation").each(function (idx) {
+  $(".translation").each(function (idx, item) {
+    console.log(idx, item);
     if ($(this).html() != "") {
-      $(this).html(comp[idx + 1].trim());
+      $(this).html(comp[idx].trim());
     } else {
-      $(this).prop("placeholder", comp[idx + 1].trim());
+      $(this).prop("placeholder", comp[idx].trim());
     }
   });
 }
 
 async function showReceipt() {
   id = $("#userId").text();
+  console.log("here " + id);
   await makeAjaxCall("GET", `/receipt/${id}/`, "", (err, resp) => {
     if (!err) {
       let output = resp.length > 0 ? "" : "<h2>No Comments</h2>";
