@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
 const language_router = require("./routers/language_router");
+const receipt_router = require("./routers/receipt_router");
 const nunjucks = require("nunjucks");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-var livereload = require("livereload");
 var connectLiveReload = require("connect-livereload");
 
 nunjucks.configure("./views", {
@@ -12,9 +12,10 @@ nunjucks.configure("./views", {
   express: app,
 });
 
-// app.use(cookieParser())
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/", language_router);
+app.use("/receipt", receipt_router);
 
 app.use(express.static("public"));
 
