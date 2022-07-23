@@ -37,6 +37,7 @@
                             </div>
                         </div>
 
+                        {% if page == "patient" %}
                         <div class="dropdown language-position">
                             <button id="langSel" type="button" class="dropdown-toggle language-button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,6 +49,8 @@
                                 {% endfor %}
                             </div>
                         </div>
+                        {% endif %}
+
                         <div class=" col-md-8">
                             <div class="menu-main d-flex align-items-center justify-content-center">
                                 <!-- Main-menu -->
