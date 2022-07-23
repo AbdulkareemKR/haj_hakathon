@@ -86,6 +86,37 @@ function updatePlaceholders(updateString) {
   });
 }
 
+async function showReceipt() {
+  id = $("#userId").text();
+  await makeAjaxCall("GET", `/receipt/${id}/`, "", (err, resp) => {
+    if (!err) {
+      let output = resp.length > 0 ? "" : "<h2>No Comments</h2>";
+      output += ` <form class="col-lg-6" id="commentForm">
+                                <input type="hidden" name="flower_id" value="${id}">
+                                <input type="text" name="author" class="form-control" placeholder="Your name" required>
+                                <textarea name="comment" class="form-control" cols="30" rows="5" placeholder="Your comment" required></textarea>
+                                <div>
+                                    <button name="submit"   type="button" onclick="sendForm()" class="btn btn-outline-primary float-end" >Add A Comment</button>
+                                </div>
+                            </form>`;
+      if (resp.length > 0) {
+        resp.forEach((comment) => {
+          output += `
+                       <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"> ${comment["author"]}</h4>
+                                <p class="card-text"> ${comment["comment"]}</p>
+                            </div>
+                        </div>
+                      </div>`;
+        });
+      }
+      document.querySelector("#commentsRow").innerHTML = output;
+    }
+  });
+}
+
 // Speech Section
 const text = "my med";
 const speech = window.speechSynthesis;
