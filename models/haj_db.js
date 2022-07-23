@@ -2,8 +2,8 @@ const sqlite = require("better-sqlite3");
 const path = require("path");
 const db = new sqlite(path.resolve("haj.db"), { fileMustExist: true });
 
-const getReceiptById = (id) => {
-  return db.prepare("SELECT * FROM receipt WHERE id = ?").get(id);
+const getReceiptById = async (id) => {
+  return db.prepare("SELECT * FROM receipt WHERE patientId = ?").all(id);
 };
 
 const getAllLanguages = () => {

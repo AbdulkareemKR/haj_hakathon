@@ -67,3 +67,29 @@
 .contact-form-main #contact-form {
   padding: 10px 30px;
 }
+
+.align-right {
+  text-align: right;
+}
+
+.result-button {
+  width: 100%;
+  color: white !important;
+  height: 40px;
+  background-color: white;
+  padding: 6px;
+}
+
+.treatment-title {
+  font-family: "Muli", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #030431;
+  width: 300px;
+  display: inline;
+}
+
+.treatment-description {
+  display: inline;
+  font-size: 16px;
+}

@@ -1,3 +1,5 @@
+let currentLanguage = "en";
+
 readPageText();
 
 function readPageText() {
@@ -57,11 +59,12 @@ const languageCode = userLang.split("-")[0];
 $(document).ready(function () {
   $(".dropdown-item").click(function (e) {
     console.log("translate ");
-    settings.data.q = readPageText();
 
     // to get the abbreviation of the desired language
     if ($(this).attr("tolang") != "en") {
       settings.data.target = $(this).attr("tolang");
+      settings.data.source = currentLanguage;
+      currentLanguage = settings.data.target;
       if (settings.data.target == "ar") {
         $(".translation").css("text-align", "right");
         $(".t-align").css("text-align", "right");
@@ -80,6 +83,7 @@ $(document).ready(function () {
 });
 
 function fetchTranslation() {
+  settings.data.q = readPageText();
   $.ajax(settings).done(function (response) {
     console.log("res" + response);
 
@@ -144,7 +148,7 @@ async function showReceipt() {
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p class="t-align"><p class="treatment-title translation">Drug Name:</p> <p class="treatment-description t-align">  ${item.drugName} </p></p>
+                                              <p><p class="treatment-title translation">Drug Name:</p> <p class="treatment-description t-align">  ${item.drugName} </p></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
