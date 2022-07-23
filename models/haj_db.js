@@ -48,15 +48,6 @@ const addMealReview = (review) => {
     );
 };
 
-review = {
-  reviewer_name: "abdullah",
-  city: "Riyadh",
-  date: "2015-34-43",
-  rating: 1,
-  review: "goood",
-  meal_id: 3,
-};
-
 // addMealReview(review);
 module.exports = {
   getAllLanguages,
