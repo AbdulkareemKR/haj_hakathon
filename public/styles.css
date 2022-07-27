@@ -93,10 +93,6 @@
   font-size: 16px;
 }
 
-.hide {
-  display: none;
-}
-
 .center {
   text-align: center !important;
 }
@@ -134,7 +130,7 @@
   color: grey;
   font-weight: 500;
   font-size: 16px;
-  display: inline;
+  display: inline-block;
   cursor: pointer;
   padding: 5px;
   border-radius: 10px;
@@ -154,4 +150,8 @@ input[type="radio"]:checked + label {
     rgb(85, 154, 243)
   );
   color: white;
+}
+
+.hide {
+  display: none !important;
 }

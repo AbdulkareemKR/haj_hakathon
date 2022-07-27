@@ -21,7 +21,7 @@
                             <!--Section Tittle  -->
                             <div class="form-tittle">
                                 <div class="section-tittle section-tittle2">
-                                    <h1 class="cd-headline letters scale title"> Find Your
+                                    <h1 class="cd-headline letters scale title"> Create a
                                         <strong class="cd-words-wrapper">
                                             <b class="is-visible">Receipt</b>
                                             <b>Receipt</b>
@@ -50,82 +50,123 @@
                                     <div id="make-receipt" class="hide">
 
                                         <div class="row">
-                                            <label for="username" class="doctor-field-title col-4">Date: </label>
+                                            <label for="receiptDate" class="doctor-field-title col-4">Date: </label>
                                             <div class="form-box user-icon mb-30 col-8">
-                                                <input class="input-field" type="date" name="date"
+                                                <input class="input-field" type="date" id="receiptDate" name="date"
                                                     placeholder="Date of the receipt">
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label for="username" class="doctor-field-title col-4">Patient Name:
+                                            <label for="patientName" class="doctor-field-title col-4">Patient Name:
                                             </label>
                                             <div class="form-box mb-30 col-8">
-                                                <input class="input-field " type="text" name="patientName"
-                                                    placeholder="Patient Name">
+                                                <input class="input-field" type="text" id="patientName"
+                                                    name="patientName" placeholder="Patient Name">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label for="patientId" class="doctor-field-title col-4">ID:
                                             </label>
                                             <div class="form-box user-icon mb-30  col-8">
-                                                <input class="input-field" type="text" name="patientId"
+                                                <input class="input-field" type="text" name="patientId" id="patientId"
                                                     placeholder="ID of the patient">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label class="doctor-field-title col-4">Medicine Type:
                                             </label>
-                                            <div class="form-box user-icon mb-40  col-8" id="amountType">
-                                                <input type="radio" name="amountType" value="capsules"
-                                                    class="radio-button " style="height: 20px; width: 50px">
-                                                <label for="amountType" class="radio-button ">Capsules
+                                            <div class="form-box user-icon mb-40 col-8" id="amountType"
+                                                style="padding-top: 30px;">
+                                                <input type="radio" name="amountType" value="capsules" id="capsules"
+                                                    class="radio-design" style="height: 20px; width: 50px">
+                                                <label for="capsules" class="radio-button">Capsules
                                                 </label>
-                                                <input type="radio" name="amountType" value="syrup"
-                                                    class="radio-button " style="height: 20px; width: 50px">
-                                                <label for="amountType" class="radio-button ">Syrup
+                                                <input type="radio" name="amountType" value="syrup" id="syrup"
+                                                    class="radio-design" style="height: 20px; width: 50px">
+                                                <label for="syrup" class="radio-button ">Syrup
                                                 </label>
-                                                <input type="radio" name="amountType" value="cream"
-                                                    class="radio-button " style="height: 20px; width: 50px">
-                                                <label for="amountType" class="radio-button ">Cream/Gel
+                                                <input type="radio" name="amountType" value="cream" id="cream"
+                                                    class="radio-design" style="height: 20px; width: 50px">
+                                                <label for="cream" class="radio-button ">Cream/Gel
                                                 </label>
                                             </div>
                                         </div>
                                         <div id="doseAmount" class="row hide">
-                                            <label for="doseAmount" class="doctor-field-title col-4">Dose Amount
+                                            <label for="amount" class="doctor-field-title col-4">Dose Amount
                                             </label>
                                             <div class="form-box user-icon mb-40 col-8">
-                                                <select class="select"></select>
+                                                <select id="amount" class="select"></select>
                                                 <p style="display: inline"></p>
                                             </div>
                                         </div>
                                         <div id="takingMethod" class="row hide">
                                             <label class="doctor-field-title col-4">Taking Method:
                                             </label>
-                                            <div class="form-box user-icon mb-40 col-8">
+                                            <div class="form-box user-icon mb-40 col-8" style="padding-top: 30px;">
                                                 <input type="radio" name="takingMethod" value="through the mouth"
-                                                    class="radio-button " style="height: 20px; width: 50px">
-                                                <label for="takingMethod" class="radio-button ">Mouth
+                                                    id="mouth" class="radio-design" style="height: 20px; width: 50px">
+                                                <label for="mouth" class="radio-button ">Mouth
                                                 </label>
-                                                <input type="radio" name="takingMethod" value="specified"
-                                                    class="radio-button " style="height: 20px; width: 50px">
-                                                <label for="takingMethod" class="radio-button ">Specified
+                                                <input type="radio" name="takingMethod" value="specified" id="specified"
+                                                    class="radio-design" style="height: 20px; width: 50px">
+                                                <label for="specified" class="radio-button ">Specified
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label for="patientId" class="doctor-field-title col-4">ID:
+                                            <label class="doctor-field-title col-4">Taking Times:
                                             </label>
-                                            <div class="form-box user-icon mb-30  col-8">
-                                                <input class="input-field" type="text" name="patientId"
-                                                    placeholder="ID of the patient">
+                                            <div class="form-box mb-40 col-8" id="timeType" style="padding-top: 30px;">
+                                                <input type="radio" name="timeType" value="specific" id="specific"
+                                                    class="radio-design" style="height: 20px; width: 50px">
+                                                <label for="specific" class="radio-button">Specific Times
+                                                </label>
+                                                <input type="radio" name="timeType" value="hours" id="hours"
+                                                    class="radio-design" style="height: 20px; width: 50px">
+                                                <label for="hours" class="radio-button ">Based on Hours
+                                                </label>
+                                                <input type="radio" name="timeType" value="whenNeeded" id="whenNeeded"
+                                                    class="radio-design" style="height: 20px; width: 50px">
+                                                <label for="whenNeeded" class="radio-button ">wheen is Needed
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div id="dosesTime" class="row hide">
+                                            <label for="dosesNumberOfTimesSelect" class="doctor-field-title col-4">
+                                            </label>
+                                            <div class="form-box user-icon mb-40 col-8">
+                                                <select id="dosesNumberOfTimesSelect" class="select"></select>
+                                            </div>
+
+                                            <label for="dosesTimeSelect"
+                                                class="doctor-field-title col-4 specificTimesEnums">
+                                            </label>
+
+                                            <div class="form-box user-icon mb-40 col-8 specificTimesEnums">
+                                                <select id="dosesTimeSelect" class="select"></select>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label for="patientId" class="doctor-field-title col-4">ID:
+                                            <label for="duration" class="doctor-field-title col-4">For how many days?
                                             </label>
                                             <div class="form-box user-icon mb-30  col-8">
-                                                <input class="input-field" type="text" name="patientId"
-                                                    placeholder="ID of the patient">
+                                                <select name="duration" id="duration" class="select">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label for="comment" class="doctor-field-title col-4">Additional comments:
+                                            </label>
+                                            <div class="form-box user-icon mb-30  col-8">
+                                                <input id="comment" class="input-field" type="text" name="comment"
+                                                    placeholder="Enter your comment">
                                             </div>
                                         </div>
 
