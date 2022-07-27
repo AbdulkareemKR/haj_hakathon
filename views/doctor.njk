@@ -36,9 +36,9 @@
                                 style="margin-bottom: 50px; padding-bottom: 30px">
                                 <div class="col">
                                     <div id="signin">
-                                        <div class="form-box mb-30">
-                                            <input id="doctor-user-name" class="input-field" type="text" name="username"
-                                                placeholder="Enter Your User Name">
+                                        <div class="form-box mb-30 ">
+                                            <input id=" doctor-user-name" class="input-field " type="text"
+                                                name="username" placeholder="Enter Your User Name">
                                         </div>
                                         <div class="form-box mb-30">
                                             <input id="doctor-password" class="input-field" type="password"
@@ -48,82 +48,87 @@
                                     </div>
 
                                     <div id="make-receipt" class="hide">
-                                        <div class="row-12">
-                                            <div class="form-box user-icon mb-30">
-                                                <input class="input-field" type="text" name="date"
-                                                    placeholder="Date of the receipt" disabled value="Date().now">
+
+                                        <div class="row">
+                                            <label for="username" class="doctor-field-title col-4">Date: </label>
+                                            <div class="form-box user-icon mb-30 col-8">
+                                                <input class="input-field" type="date" name="date"
+                                                    placeholder="Date of the receipt">
                                             </div>
                                         </div>
-                                        <div class="row-12">
-                                            <div class="form-box user-icon mb-30">
-                                                <input class="input-field" type="text" name="patientName"
+                                        <div class="row">
+                                            <label for="username" class="doctor-field-title col-4">Patient Name:
+                                            </label>
+                                            <div class="form-box mb-30 col-8">
+                                                <input class="input-field " type="text" name="patientName"
                                                     placeholder="Patient Name">
                                             </div>
                                         </div>
-                                        <div class="row-12">
-                                            <div class="form-box user-icon mb-30">
+                                        <div class="row">
+                                            <label for="patientId" class="doctor-field-title col-4">ID:
+                                            </label>
+                                            <div class="form-box user-icon mb-30  col-8">
                                                 <input class="input-field" type="text" name="patientId"
                                                     placeholder="ID of the patient">
                                             </div>
                                         </div>
-                                        <div class="row-12">
-                                            <div class="form-box user-icon mb-30">
-                                                <input class="input-field" type="text" name="amountType"
-                                                    placeholder="Medicine Type">
+                                        <div class="row">
+                                            <label class="doctor-field-title col-4">Medicine Type:
+                                            </label>
+                                            <div class="form-box user-icon mb-40  col-8" id="amountType">
+                                                <input type="radio" name="amountType" value="capsules"
+                                                    class="radio-button " style="height: 20px; width: 50px">
+                                                <label for="amountType" class="radio-button ">Capsules
+                                                </label>
+                                                <input type="radio" name="amountType" value="syrup"
+                                                    class="radio-button " style="height: 20px; width: 50px">
+                                                <label for="amountType" class="radio-button ">Syrup
+                                                </label>
+                                                <input type="radio" name="amountType" value="cream"
+                                                    class="radio-button " style="height: 20px; width: 50px">
+                                                <label for="amountType" class="radio-button ">Cream/Gel
+                                                </label>
                                             </div>
                                         </div>
-                                        <div class="row-12">
-                                            <div class="form-box user-icon mb-30">
-                                                <input class="input-field" type="text" name="date"
-                                                    placeholder="Date of the receipt">
+                                        <div id="doseAmount" class="row hide">
+                                            <label for="doseAmount" class="doctor-field-title col-4">Dose Amount
+                                            </label>
+                                            <div class="form-box user-icon mb-40 col-8">
+                                                <select class="select"></select>
+                                                <p style="display: inline"></p>
                                             </div>
                                         </div>
-                                        <div class="row-12">
-                                            <div class="form-box email-icon mb-30">
-                                                <input class="input-field" type="text" name="email" placeholder="Phone">
+                                        <div id="takingMethod" class="row hide">
+                                            <label class="doctor-field-title col-4">Taking Method:
+                                            </label>
+                                            <div class="form-box user-icon mb-40 col-8">
+                                                <input type="radio" name="takingMethod" value="through the mouth"
+                                                    class="radio-button " style="height: 20px; width: 50px">
+                                                <label for="takingMethod" class="radio-button ">Mouth
+                                                </label>
+                                                <input type="radio" name="takingMethod" value="specified"
+                                                    class="radio-button " style="height: 20px; width: 50px">
+                                                <label for="takingMethod" class="radio-button ">Specified
+                                                </label>
                                             </div>
                                         </div>
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class='col-sm-6'>
-                                                    <div class="form-group">
-                                                        <div class='input-group date' id='datetimepicker1'>
-                                                            <input type='text' class="form-control" />
-                                                            <span class="input-group-addon">
-                                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <script type="text/javascript">
-                                                    $(function () {
-                                                        $('#datetimepicker1').datetimepicker();
-                                                    });
-                                                </script>
+                                        <div class="row">
+                                            <label for="patientId" class="doctor-field-title col-4">ID:
+                                            </label>
+                                            <div class="form-box user-icon mb-30  col-8">
+                                                <input class="input-field" type="text" name="patientId"
+                                                    placeholder="ID of the patient">
                                             </div>
                                         </div>
-                                        <div class="row-12 input-field">
+                                        <div class="row">
+                                            <label for="patientId" class="doctor-field-title col-4">ID:
+                                            </label>
+                                            <div class="form-box user-icon mb-30  col-8">
+                                                <input class="input-field" type="text" name="patientId"
+                                                    placeholder="ID of the patient">
+                                            </div>
+                                        </div>
 
-                                            <select class="form-box mb-30" name="cars" id="cars">
-                                                <option value="volvo">Volvo</option>
-                                                <option value="saab">Saab</option>
-                                                <option value="mercedes">Mercedes</option>
-                                                <option value="audi">Audi</option>
-                                            </select>
-
-                                        </div>
-                                        <div class="row-12">
-                                            <div class="form-box subject-icon mb-30">
-                                                <input class="input-field" type="Email" name="subject"
-                                                    placeholder="Email">
-                                            </div>
-                                        </div>
-                                        <div class="row-12">
-                                            <div class="form-box message-icon mb-30">
-                                                <input type="textarea" rows="4" class="input-field" name="message"
-                                                    id="message" placeholder="Message"></input>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </form>

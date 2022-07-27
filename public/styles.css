@@ -26,7 +26,6 @@
 }
 
 .input-field {
-  color: #1f2b7b;
   font-weight: 300;
   font-size: 16px;
 }
@@ -100,4 +99,40 @@
 
 .center {
   text-align: center !important;
+}
+
+/* 
+.baseline {
+  display: flex;
+  align-items: center;
+} */
+
+.doctor-field-title {
+  font-family: "Muli", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #030431;
+  width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.radio-button {
+  color: grey;
+  font-weight: 500;
+  font-size: 16px;
+  display: inline;
+}
+
+.select {
+  font-size: 16px;
+  color: grey;
+  font-weight: 500;
+  background-color: #f7fdff;
+  border-radius: 5px;
+  width: 80%;
+  text-align: center;
+  border-color: #f7fdff;
+  border-width: 2px;
+  border-bottom-color: #e9f0f4;
 }
