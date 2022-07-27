@@ -41,8 +41,8 @@ var userLang = navigator.language || navigator.userLanguage;
 
 const languageCode = userLang.split("-")[0];
 console.log(languageCode);
-readPageText();
-beginTranslation(languageCode);
+// readPageText();
+// beginTranslation(languageCode);
 
 function beginTranslation(language) {
   if (settings.data.source == "en") {
@@ -192,3 +192,98 @@ const speakNow = () => {
     alert("Sorry, your browser doesn't support text to speech!");
   }
 };
+
+// Doctor:
+
+$("#amountType input") // select the radio by its id
+  .on("change", function () {
+    // bind a function to the change event
+    let amountType = $('input[name="amountType"]:checked').val();
+    switch (amountType) {
+      case "capsules":
+        $("#doseAmount label").html("Number of Capsules per Dose:");
+        $("#doseAmount").removeClass("hide");
+        $("#takingMethod").removeClass("hide");
+        $("#doseAmount select").empty();
+
+        for (i = 1; i <= 10; i++) {
+          $("#doseAmount select").append($("<option></option>").val(i).html(i));
+        }
+        $("#doseAmount p").html("");
+        break;
+      case "syrup":
+        $("#doseAmount label").html("Amount (ml) per dose:");
+        $("#doseAmount").removeClass("hide");
+        $("#takingMethod").removeClass("hide");
+        $("#doseAmount select").empty();
+
+        for (i = 1; i <= 15; i++) {
+          $("#doseAmount select").append($("<option></option>").val(i).html(i));
+        }
+        $("#doseAmount p").html("ml");
+        break;
+      case "cream":
+        $("#doseAmount").addClass("hide");
+        $("#takingMethod").addClass("hide");
+        break;
+    }
+  });
+
+$("#timeType input") // select the radio by its id
+  .on("change", function () {
+    // bind a function to the change event
+    let timeType = $('input[name="timeType"]:checked').val();
+    console.log(timeType);
+    switch (timeType) {
+      case "specific":
+        $("#dosesTime").removeClass("hide");
+        $("#dosesTime select").empty();
+        $(".specificTimesEnums").removeClass("hide");
+        $("#dosesTime label[for='dosesNumberOfTimesSelect']").html(
+          "Number of doses per a day:"
+        );
+        $("#dosesTime label[for='dosesTimeSelect']").html(
+          "When is the dose taken:"
+        );
+
+        // $("#takingMethod").removeClass("hide");
+
+        for (i = 1; i <= 6; i++) {
+          $("#dosesTime select[id='dosesNumberOfTimesSelect']").append(
+            $("<option></option>").val(i).html(i)
+          );
+        }
+        $("#dosesTime select[id='dosesTimeSelect']").append(
+          $("<option></option>").val("Before any meal").html("Before any meal")
+        );
+        $("#dosesTime select[id='dosesTimeSelect']").append(
+          $("<option></option>").val("After lunch").html("After lunch")
+        );
+        $("#dosesTime select[id='dosesTimeSelect']").append(
+          $("<option></option>").val("After lunch").html("After lunch")
+        );
+        $("#dosesTime select[id='dosesTimeSelect']").append(
+          $("<option></option>").val("Before sleep").html("Before sleep")
+        );
+        $("#dosesTime select[id='dosesTimeSelect']").append(
+          $("<option></option>").val("At any time").html("At any time")
+        );
+        break;
+      case "hours":
+        $("#dosesTime").removeClass("hide");
+        $("#dosesTime select").empty();
+        $("#dosesTime label[for='dosesNumberOfTimesSelect']").html(
+          "Number of hours per a dose:"
+        );
+        for (i = 2; i <= 8; i = i + 2) {
+          $("#dosesTime select[id='dosesNumberOfTimesSelect']").append(
+            $("<option></option>").val(i).html(i)
+          );
+        }
+        $(".specificTimesEnums").addClass("hide");
+        break;
+      case "whenNeeded":
+        $("#dosesTime").addClass("hide");
+        break;
+    }
+  });
