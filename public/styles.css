@@ -117,13 +117,6 @@
   align-items: center;
 }
 
-.radio-button {
-  color: grey;
-  font-weight: 500;
-  font-size: 16px;
-  display: inline;
-}
-
 .select {
   font-size: 16px;
   color: grey;
@@ -135,4 +128,30 @@
   border-color: #f7fdff;
   border-width: 2px;
   border-bottom-color: #e9f0f4;
+}
+
+.radio-button {
+  color: grey;
+  font-weight: 500;
+  font-size: 16px;
+  display: inline;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 5px;
+}
+
+.radio-design {
+  display: none;
+}
+
+input[type="radio"]:checked + label {
+  font-weight: bold;
+  background-image: linear-gradient(
+    to left,
+    rgb(20, 98, 243),
+    rgb(85, 154, 243)
+  );
+  color: white;
 }
