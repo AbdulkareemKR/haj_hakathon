@@ -209,6 +209,16 @@ function fetchLanguages(fullContent) {
     },
   });
 }
+
+function addRecept() {
+  $.ajax({
+    type: "POST",
+    url: "url",
+    data: data,
+    success: success,
+    dataType: dataType,
+  });
+}
 function speakNow(content, languageVoiceName, languageVoiceNumber) {
   // Check if Speech Synthesis is supported
   console.log(content, languageVoiceName, languageVoiceNumber);
@@ -292,16 +302,16 @@ $("#timeType input") // select the radio by its id
           );
         }
         $("#dosesTime select[id='dosesTimeSelect']").append(
-          $("<option></option>").val("Before any meal").html("Before any meal")
+          $("<option></option>").val("Before any meal").html("Before meals")
         );
         $("#dosesTime select[id='dosesTimeSelect']").append(
-          $("<option></option>").val("After lunch").html("After lunch")
+          $("<option></option>").val("After lunch").html("After meals")
         );
         $("#dosesTime select[id='dosesTimeSelect']").append(
-          $("<option></option>").val("After lunch").html("After lunch")
+          $("<option></option>").val("After lunch").html("Before sleep")
         );
         $("#dosesTime select[id='dosesTimeSelect']").append(
-          $("<option></option>").val("Before sleep").html("Before sleep")
+          $("<option></option>").val("Before sleep").html("On an empty stomach")
         );
         $("#dosesTime select[id='dosesTimeSelect']").append(
           $("<option></option>").val("At any time").html("At any time")
