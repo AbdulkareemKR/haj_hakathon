@@ -23,8 +23,8 @@
                                 <div class="section-tittle section-tittle2">
                                     <h1 class="cd-headline letters scale title"> Create a
                                         <strong class="cd-words-wrapper">
-                                            <b class="is-visible">Receipt</b>
-                                            <b>Receipt</b>
+                                            <b class="is-visible">Prescription</b>
+                                            <b>Prescription</b>
 
                                         </strong>
                                     </h1>
@@ -105,7 +105,7 @@
                                             <div class="form-box user-icon mb-40 col-8" style="padding-top: 30px;">
                                                 <input type="radio" name="takingMethod" value="through the mouth"
                                                     id="mouth" class="radio-design" style="height: 20px; width: 50px">
-                                                <label for="mouth" class="radio-button ">Mouth
+                                                <label for="mouth" class="radio-button ">Oral
                                                 </label>
                                                 <input type="radio" name="takingMethod" value="specified" id="specified"
                                                     class="radio-design" style="height: 20px; width: 50px">
@@ -127,7 +127,7 @@
                                                 </label>
                                                 <input type="radio" name="timeType" value="whenNeeded" id="whenNeeded"
                                                     class="radio-design" style="height: 20px; width: 50px">
-                                                <label for="whenNeeded" class="radio-button ">wheen is Needed
+                                                <label for="whenNeeded" class="radio-button ">when is Needed
                                                 </label>
                                             </div>
                                         </div>
@@ -151,13 +151,9 @@
                                             </label>
                                             <div class="form-box user-icon mb-30  col-8">
                                                 <select name="duration" id="duration" class="select">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
+                                                    {% for i in range(30) %}
+                                                    <option value={{i+1}}>{{i+1}}</option>
+                                                    {% endfor %}
                                                 </select>
                                             </div>
                                         </div>

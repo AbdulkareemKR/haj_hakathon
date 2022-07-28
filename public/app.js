@@ -114,7 +114,7 @@ async function showReceipt() {
         output += `
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p ><p class="treatment-title translation">Receipt Date: </p> <p class="treatment-description translation">  ${item.date}</p> <a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
+                                              <p ><p class="treatment-title translation">Prescription Date: </p> <p class="treatment-description translation">  ${item.date}</p> <a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
@@ -142,7 +142,7 @@ async function showReceipt() {
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p ><p class="treatment-title translation">Duration of The Treatment:</p> <p class="treatment-description translation">   ${item.duration} days</p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
+                                              <p ><p class="treatment-title translation">Treatment Duration:</p> <p class="treatment-description translation">   ${item.duration} days</p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
@@ -159,7 +159,7 @@ async function showReceipt() {
                                       </br>
                                    `;
       });
-      document.querySelector("#receipt-info").innerHTML = output;
+      document.querySelector("#contact-form").innerHTML = output;
       // read page text because it has been changed
       settings.data.q = readPageText();
       beginTranslation(currentLanguage);
@@ -313,7 +313,7 @@ $("#timeType input") // select the radio by its id
         $("#dosesTime label[for='dosesNumberOfTimesSelect']").html(
           "Number of hours per a dose:"
         );
-        for (i = 2; i <= 8; i = i + 2) {
+        for (i = 2; i <= 12; i = i + 2) {
           $("#dosesTime select[id='dosesNumberOfTimesSelect']").append(
             $("<option></option>").val(i).html(i)
           );
