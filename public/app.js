@@ -10,13 +10,13 @@ function readPageText() {
       cleaned = $(this)
         .text()
         .replace(/\r?\n|/g, "");
-      console.log($(this).text());
+      // console.log($(this).text());
       textList += cleaned;
     } else {
       textList += item.placeholder;
     }
   });
-  console.log(textList);
+  // console.log(textList);
   return textList;
 }
 
@@ -62,7 +62,6 @@ function beginTranslation(language) {
 
     $("button").html($(this).html());
   } else {
-    console.log();
     updatePlaceholders(settings.data.q);
   }
 }
@@ -78,7 +77,7 @@ $(document).ready(function () {
 
 function fetchTranslation() {
   $.ajax(settings).done(function (response) {
-    console.log("res" + response);
+    // console.log("res" + response);
 
     var translatedText = response.data.translations[0].translatedText;
 
@@ -88,10 +87,10 @@ function fetchTranslation() {
 
 function updatePlaceholders(updateString) {
   var comp = updateString.split("|");
-  console.log(comp);
+  // console.log(comp);
 
   $(".translation").each(function (idx, item) {
-    console.log(idx, item);
+    // console.log(idx, item);
     if ($(this).html() != "") {
       $(this).html(comp[idx].trim());
     } else {
@@ -105,33 +104,32 @@ async function showReceipt() {
   console.log(id);
   let output = "";
   $.ajax({
-    //create an ajax request to display.php
     type: "GET",
     url: `/receipt/${id}`,
     dataType: "html", //expect html to be returned
     success: function (response) {
       responseJson = JSON.parse(response);
-      console.log(responseJson);
+      // console.log(responseJson);
       responseJson.receipt.forEach((item) => {
         output += `
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p ><p class="treatment-title translation">Receipt Date: </p> <p class="treatment-description translation">  ${item.date}</p></p>
+                                              <p ><p class="treatment-title translation">Receipt Date: </p> <p class="treatment-description translation">  ${item.date}</p> <a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p class="translation translation"><p class="treatment-title translation">Patient Name:</p> <p class="treatment-description translation">  ${item.patientName} </p></p>
+                                              <p class="translation translation"><p class="treatment-title translation">Patient Name:</p> <p class="treatment-description translation">  ${item.patientName} </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p ><p class="treatment-title translation">Patient ID:</p> <p class="treatment-description translation">  ${item.patientId} </p></p>
+                                              <p ><p class="treatment-title translation">Patient ID:</p> <p class="treatment-description translation">  ${item.patientId} </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p><p class="treatment-title translation">Drug Name:</p> <p class="treatment-description t-align">  ${item.drugName} </p></p>
+                                              <p><p class="treatment-title translation">Drug Name:</p> <p class="treatment-description t-align">  ${item.drugName} </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
@@ -139,22 +137,22 @@ async function showReceipt() {
                                               <p ><p class="treatment-title translation">Instructions:</p> <p class="treatment-description translation">  Take ${item.doseAmount} ${item.amountType},
                                                       &nbsp;${item.takingMethod}, ${item.dosesPerDay} times per day, for ${item.duration}
                                                       day/days.
-                                              </p></p>
+                                              </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p ><p class="treatment-title translation">Duration of The Treatment:</p> <p class="treatment-description translation">   ${item.duration} days</p></p>
+                                              <p ><p class="treatment-title translation">Duration of The Treatment:</p> <p class="treatment-description translation">   ${item.duration} days</p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p > <p class="treatment-title translation">Dose Taking Time:</p> <p class="treatment-description translation">  ${item.dosesTime}</p></p>
+                                              <p > <p class="treatment-title translation">Dose Taking Time:</p> <p class="treatment-description translation">  ${item.dosesTime}</p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p ><p class="treatment-title translation">Additional Comments:</p> <p class="treatment-description translation"> ${item.comment}</p></p>
+                                              <p ><p class="treatment-title translation">Additional Comments:</p> <p class="treatment-description translation"> ${item.comment}</p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <hr>
@@ -176,24 +174,64 @@ function navigateToReceipt() {
 
 // Speech Section
 
-const speakNow = () => {
+function voiceClick(e) {
+  e = e || window.event;
+  var target = e.target || e.srcElement;
+
+  // getting the parent of the target to go to the siblings
+  target = target.parentElement;
+  let fieldDescription = target.previousElementSibling;
+  let fieldTitle = fieldDescription.previousElementSibling;
+
+  const fullContent = fieldTitle.textContent + fieldDescription.textContent;
+  fetchLanguages(fullContent);
+}
+
+function fetchLanguages(fullContent) {
+  $.ajax({
+    type: "GET",
+    url: `/language`,
+    dataType: "html", //expect html to be returned
+    success: function (response) {
+      responseJson = JSON.parse(response);
+      let languageVoiceName = "";
+      let languageVoiceNumber = 0;
+      responseJson.receipt.forEach((language) => {
+        let languageCode = language.value.split("-")[0];
+        // console.log(languageCode);
+        if (languageCode == currentLanguage) {
+          languageVoiceName = language.voiceName;
+          languageVoiceNumber = language.voiceNumber;
+          speakNow(fullContent, languageVoiceName, languageVoiceNumber);
+          return;
+        }
+      });
+    },
+  });
+}
+function speakNow(content, languageVoiceName, languageVoiceNumber) {
   // Check if Speech Synthesis is supported
-  const text = "hello";
+  console.log(content, languageVoiceName, languageVoiceNumber);
+  const text = content;
   const speech = window.speechSynthesis;
   if ("speechSynthesis" in window) {
-    const msg = new SpeechSynthesisUtterance("hello");
+    const msg = new SpeechSynthesisUtterance();
     const voices = speech.getVoices();
-    msg.voice = voices[0];
-    msg.lang = "en-US";
+    msg.voice = voices[languageVoiceNumber];
+    msg.lang = languageVoiceName;
     msg.text = text;
     window.speechSynthesis.speak(msg);
   } else {
     // Speech Synthesis Not Supported
     alert("Sorry, your browser doesn't support text to speech!");
   }
-};
+}
 
-// Doctor:
+// Doctor Section
+
+// set date field to today
+var today = new Date().toISOString().slice(0, 10);
+$("#receiptDate").val(today);
 
 $("#amountType input") // select the radio by its id
   .on("change", function () {

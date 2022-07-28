@@ -20,7 +20,14 @@ router.get("/receipt/:id", async function (req, res) {
   console.log(data);
   a = JSON.stringify(data);
   res.send(a);
-  // res.redirect("/");
+});
+
+router.get("/language", async function (req, res) {
+  let data = {
+    receipt: await hajDB.getAllLanguages(),
+  };
+  console.log(data);
+  res.send(JSON.stringify(data));
 });
 
 // router.get("/", function (req, res) {
