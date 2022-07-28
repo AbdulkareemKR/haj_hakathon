@@ -158,7 +158,7 @@ input[type="radio"]:checked + label {
 
 .voice {
   cursor: pointer;
-  font-size: 15px;
+  font-size: 15px !important;
   background-image: linear-gradient(to left, #559af3, #1462f3);
   background-clip: text;
   -webkit-background-clip: text;

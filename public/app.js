@@ -112,6 +112,7 @@ async function showReceipt() {
       // console.log(responseJson);
       responseJson.receipt.forEach((item) => {
         output += `
+            <div class="col t-align" id="receipt-info">
                                       <div class="row-12">
                                           <div class="form-box mb-30">
                                               <p ><p class="treatment-title translation">Prescription Date: </p> <p class="treatment-description translation">  ${item.date}</p> <a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
@@ -157,6 +158,7 @@ async function showReceipt() {
                                       </div>
                                       <hr>
                                       </br>
+                                </div>
                                    `;
       });
       document.querySelector("#contact-form").innerHTML = output;
@@ -335,3 +337,9 @@ $("#timeType input") // select the radio by its id
         break;
     }
   });
+
+function submitReceipt() {
+  $("#make-receipt").empty();
+  document.querySelector("#make-receipt").innerHTML =
+    '<img src="assets/img/qr.png" style="width: 100%">';
+}
