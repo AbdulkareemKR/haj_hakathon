@@ -366,10 +366,52 @@ $("#timeType input") // select the radio by its id
     }
   });
 
-function showQR() {
-  $("#make-receipt").empty();
-  document.querySelector("#make-receipt").innerHTML =
-    '<img src="assets/img/qr.png" style="width: 100%">';
+async function showQR() {
+  var id = $("#patientId").val();
+  console.log(id);
+  let output = "";
+  $.ajax({
+    type: "GET",
+    url: `/receipt/${id}`,
+    dataType: "html", //expect html to be returned
+    success: function (response) {
+      responseJson = JSON.parse(response);
+      responseJson.receipt.forEach((item) => {
+        output += `Prescription Date: ${item.date}%0APatient Name: ${
+          item.patientName
+        }%0APatient ID: ${item.patientId}%0ADrug Name: ${
+          item.drugName
+        }%0AInstructions: Take ${
+          item.amountType != "cream"
+            ? `${item.doseAmount} ${item.amountType},${
+                item.takingMethod == "oral" ? `through the mouth` : ``
+              }, `
+            : `${item.amountType}`
+        } ${
+          item.timeType == "specific"
+            ? `${item.dosesPerDay} times per day,`
+            : item.timeType == "hours"
+            ? `every ${item.dosesTime} hours,`
+            : `when is needed,`
+        }  for ${item.duration} day/days.%0ATreatment Duration: ${
+          item.duration
+        }%0A${
+          item.timeType != "specific"
+            ? ""
+            : `Dose Taking Time: ${item.dosesTime}%0A`
+        }Additional Comments: ${
+          item.comment
+        }%0A _________________________________________________%0A%0A`;
+      });
+      $("#make-receipt").empty();
+      document.querySelector("#make-receipt").innerHTML =
+        "<img src='http://chart.apis.google.com/chart?cht=qr&chl=" +
+        output +
+        "&chs=" +
+        450 +
+        "' alt='qr' style='width: 100%'/>";
+    },
+  });
 }
 
 function submitReceipt() {
@@ -380,4 +422,5 @@ function submitReceipt() {
       new FormData(document.getElementById("make-receipt"))
     ),
   });
+  showQR();
 }
