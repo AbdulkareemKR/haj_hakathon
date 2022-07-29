@@ -247,15 +247,6 @@ function fetchLanguages(fullContent) {
   });
 }
 
-function addRecept() {
-  $.ajax({
-    type: "POST",
-    url: "url",
-    data: data,
-    success: success,
-    dataType: dataType,
-  });
-}
 function speakNow(content, languageVoiceName, languageVoiceNumber) {
   // Check if Speech Synthesis is supported
   console.log(content, languageVoiceName, languageVoiceNumber);
@@ -296,7 +287,7 @@ $("#amountType input") // select the radio by its id
         }
         $("#doseAmount p").html("");
         break;
-      case "syrup":
+      case "ml":
         $("#doseAmount label").html("Amount (ml) per dose:");
         $("#doseAmount").removeClass("hide");
         $("#takingMethod").removeClass("hide");
@@ -375,8 +366,18 @@ $("#timeType input") // select the radio by its id
     }
   });
 
-function submitReceipt() {
+function showQR() {
   $("#make-receipt").empty();
   document.querySelector("#make-receipt").innerHTML =
     '<img src="assets/img/qr.png" style="width: 100%">';
+}
+
+function submitReceipt() {
+  $.ajax({
+    type: "POST",
+    url: "/doctor/submit",
+    data: Object.fromEntries(
+      new FormData(document.getElementById("make-receipt"))
+    ),
+  });
 }

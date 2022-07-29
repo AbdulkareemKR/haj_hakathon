@@ -47,7 +47,8 @@
                                     </div>
 
 
-                                    <form id="make-receipt" action="/doctor/submit" method="POST" class="hide">
+                                    <form id="make-receipt" onSubmit="return false" action="/doctor/submit"
+                                        method="POST" class="hide">
 
                                         <div class="row">
                                             <label for="receiptDate" class="doctor-field-title col-4">Date: </label>
@@ -177,7 +178,8 @@
                                                     placeholder="Enter your comment">
                                             </div>
                                         </div>
-                                        <button type="submit" class=" btn result-button translation center">
+                                        <button type="submit" onClick="submitReceipt()"
+                                            class=" btn result-button translation center">
                                             Submit
                                             Prescription</button>
                                     </form>

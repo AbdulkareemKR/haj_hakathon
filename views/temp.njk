@@ -60,10 +60,8 @@
 
   <div style="float:right;">
    <div id="image" style="margin:auto">Image will show here</div>
-   <div id="link" style="margin-top:10px; text-align:center"></div>
   </div>
   
-  <div id="code" style="float:left; width:100%; height:20px; text-align:center; margin-top:10px"></div>
 <script>
 function myFunction() {
      document.getElementById("alert").innerHTML = "";
@@ -81,10 +79,8 @@ if(data == "") {
       $("#image").append("<img src='http://chart.apis.google.com/chart?cht=qr&chl=" + data + "&chs=" + size + "' alt='qr' />");
 	  
 	  //This Provide An Image Download Link
-      $("#link").append("<a style='color:#fff;' href='http://chart.apis.google.com/chart?cht=qr&chl=" + data + "&chs=" + size + "'>Download QR Code</a>");
 	  
 	  //This Provide the Image Link Path In Text
-      $("#code").append("<p style='color:#fff;'><strong>Image Link:</strong> http://chart.apis.google.com/chart?cht=qr&chl=" + data + "&chs=" + size + "</p>");
       return false;
 } else {
       $("#image").html("");
