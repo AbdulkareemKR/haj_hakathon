@@ -115,45 +115,80 @@ async function showReceipt() {
             <div class="col t-align" id="receipt-info">
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p ><p class="treatment-title translation">Prescription Date: </p> <p class="treatment-description translation">  ${item.date}</p> <a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
+                                              <p ><p class="treatment-title translation">Prescription Date: </p> <p class="treatment-description translation">  ${
+                                                item.date
+                                              }</p> <a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p class="translation translation"><p class="treatment-title translation">Patient Name:</p> <p class="treatment-description translation">  ${item.patientName} </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
+                                              <p class="translation translation"><p class="treatment-title translation">Patient Name:</p> <p class="treatment-description translation">  ${
+                                                item.patientName
+                                              } </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p ><p class="treatment-title translation">Patient ID:</p> <p class="treatment-description translation">  ${item.patientId} </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
+                                              <p ><p class="treatment-title translation">Patient ID:</p> <p class="treatment-description translation">  ${
+                                                item.patientId
+                                              } </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p><p class="treatment-title translation">Drug Name:</p> <p class="treatment-description t-align">  ${item.drugName} </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
+                                              <p><p class="treatment-title translation">Drug Name:</p> <p class="treatment-description t-align">  ${
+                                                item.drugName
+                                              } </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p ><p class="treatment-title translation">Instructions:</p> <p class="treatment-description translation">  Take ${item.doseAmount} ${item.amountType},
-                                                      &nbsp;${item.takingMethod}, ${item.dosesPerDay} times per day, for ${item.duration}
+                                              <p ><p class="treatment-title translation">Instructions:</p> <p class="treatment-description translation"> Take ${
+                                                item.amountType != "cream"
+                                                  ? `${item.doseAmount} ${
+                                                      item.amountType
+                                                    },
+                                                     ${
+                                                       item.takingMethod ==
+                                                       "oral"
+                                                         ? `through the mouth`
+                                                         : `` // in case of specific
+                                                     },`
+                                                  : `${item.amountType}`
+                                              }  ${
+          item.timeType == "specific"
+            ? `${item.dosesPerDay} times per day,`
+            : item.timeType == "hours"
+            ? `every ${item.dosesTime} hours,`
+            : `when is needed,`
+        }  for ${item.duration}
                                                       day/days.
                                               </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p ><p class="treatment-title translation">Treatment Duration:</p> <p class="treatment-description translation">   ${item.duration} days</p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
+                                              <p ><p class="treatment-title translation">Treatment Duration:</p> <p class="treatment-description translation">   ${
+                                                item.duration
+                                              } days</p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
-                                      <div class="row-12">
+                                      ${
+                                        item.timeType != "specific"
+                                          ? ""
+                                          : `<div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p > <p class="treatment-title translation">Dose Taking Time:</p> <p class="treatment-description translation">  ${item.dosesTime}</p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
+
+                                              <p > <p class="treatment-title translation">Dose Taking Time:</p> <p class="treatment-description translation">${item.dosesTime} </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
-                                      </div>
+                                      </div>`
+                                      }
+                                      
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p ><p class="treatment-title translation">Additional Comments:</p> <p class="treatment-description translation"> ${item.comment}</p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
+                                              <p ><p class="treatment-title translation">Additional Comments:</p> <p class="treatment-description translation"> ${
+                                                item.comment
+                                              }</p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <hr>
@@ -289,6 +324,8 @@ $("#timeType input") // select the radio by its id
         $("#dosesTime").removeClass("hide");
         $("#dosesTime select").empty();
         $(".specificTimesEnums").removeClass("hide");
+        $(".dosePerDay").removeClass("hide");
+
         $("#dosesTime label[for='dosesNumberOfTimesSelect']").html(
           "Number of doses per a day:"
         );
@@ -322,15 +359,15 @@ $("#timeType input") // select the radio by its id
       case "hours":
         $("#dosesTime").removeClass("hide");
         $("#dosesTime select").empty();
-        $("#dosesTime label[for='dosesNumberOfTimesSelect']").html(
+        $("#dosesTime label[for='dosesTimeSelect']").html(
           "Number of hours per a dose:"
         );
         for (i = 2; i <= 12; i = i + 2) {
-          $("#dosesTime select[id='dosesNumberOfTimesSelect']").append(
+          $("#dosesTime select[id='dosesTimeSelect']").append(
             $("<option></option>").val(i).html(i)
           );
         }
-        $(".specificTimesEnums").addClass("hide");
+        $(".dosePerDay").addClass("hide");
         break;
       case "whenNeeded":
         $("#dosesTime").addClass("hide");

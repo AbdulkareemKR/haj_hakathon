@@ -10,4 +10,10 @@ router.get("/", function (req, res) {
   res.render("doctor.njk", data);
 });
 
+router.post("/submit", function (req, res) {
+  console.log(req.body);
+  hajDB.addReceipt(req.body);
+  res.redirect("/");
+});
+
 module.exports = router;

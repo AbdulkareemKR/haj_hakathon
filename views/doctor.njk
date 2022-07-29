@@ -32,8 +32,7 @@
                             </div>
 
                             <!--End Section Tittle  -->
-                            <form id="contact-form" action="#" method="POST"
-                                style="margin-bottom: 50px; padding-bottom: 30px">
+                            <div id="contact-form" style="margin-bottom: 50px; padding-bottom: 30px">
                                 <div class="col">
                                     <div id="signin">
                                         <div class="form-box mb-30 ">
@@ -47,7 +46,8 @@
                                         <a onClick="navigateToReceipt()" class="btn result-button">Sign In</a>
                                     </div>
 
-                                    <div id="make-receipt" class="hide">
+
+                                    <form id="make-receipt" action="/doctor/submit" method="POST" class="hide">
 
                                         <div class="row">
                                             <label for="receiptDate" class="doctor-field-title col-4">Date: </label>
@@ -73,6 +73,14 @@
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <label for="drugName" class="doctor-field-title col-4">Drug Name
+                                            </label>
+                                            <div class="form-box user-icon mb-30  col-8">
+                                                <input class="input-field" type="text" name="drugName" id="drugName"
+                                                    placeholder="The Name of the Drug">
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <label class="doctor-field-title col-4">Medicine Type:
                                             </label>
                                             <div class="form-box user-icon mb-40 col-8" id="amountType"
@@ -81,7 +89,7 @@
                                                     class="radio-design" style="height: 20px; width: 50px">
                                                 <label for="capsules" class="radio-button">Capsules
                                                 </label>
-                                                <input type="radio" name="amountType" value="syrup" id="syrup"
+                                                <input type="radio" name="amountType" value="ml" id="syrup"
                                                     class="radio-design" style="height: 20px; width: 50px">
                                                 <label for="syrup" class="radio-button ">Syrup
                                                 </label>
@@ -92,10 +100,10 @@
                                             </div>
                                         </div>
                                         <div id="doseAmount" class="row hide">
-                                            <label for="amount" class="doctor-field-title col-4">Dose Amount
+                                            <label for="doseAmount" class="doctor-field-title col-4">Dose Amount
                                             </label>
                                             <div class="form-box user-icon mb-40 col-8">
-                                                <select id="amount" class="select"></select>
+                                                <select id="amount" name="doseAmount" class="select"></select>
                                                 <p style="display: inline"></p>
                                             </div>
                                         </div>
@@ -103,8 +111,8 @@
                                             <label class="doctor-field-title col-4">Taking Method:
                                             </label>
                                             <div class="form-box user-icon mb-40 col-8" style="padding-top: 30px;">
-                                                <input type="radio" name="takingMethod" value="through the mouth"
-                                                    id="mouth" class="radio-design" style="height: 20px; width: 50px">
+                                                <input type="radio" name="takingMethod" value="oral" id="mouth"
+                                                    class="radio-design" style="height: 20px; width: 50px">
                                                 <label for="mouth" class="radio-button ">Oral
                                                 </label>
                                                 <input type="radio" name="takingMethod" value="specified" id="specified"
@@ -132,10 +140,12 @@
                                             </div>
                                         </div>
                                         <div id="dosesTime" class="row hide">
-                                            <label for="dosesNumberOfTimesSelect" class="doctor-field-title col-4">
+                                            <label for="dosesNumberOfTimesSelect"
+                                                class="doctor-field-title col-4 dosePerDay">
                                             </label>
-                                            <div class="form-box user-icon mb-40 col-8">
-                                                <select id="dosesNumberOfTimesSelect" class="select"></select>
+                                            <div class="form-box user-icon mb-40 col-8 dosePerDay">
+                                                <select id="dosesNumberOfTimesSelect" name="dosesPerDay"
+                                                    class="select"></select>
                                             </div>
 
                                             <label for="dosesTimeSelect"
@@ -143,11 +153,12 @@
                                             </label>
 
                                             <div class="form-box user-icon mb-40 col-8 specificTimesEnums">
-                                                <select id="dosesTimeSelect" class="select"></select>
+                                                <select id="dosesTimeSelect" name="dosesTime" class="select"></select>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label for="duration" class="doctor-field-title col-4">For how many days?
+                                            <label for="duration" class="doctor-field-title col-4">For how many
+                                                days?
                                             </label>
                                             <div class="form-box user-icon mb-30  col-8">
                                                 <select name="duration" id="duration" class="select">
@@ -158,19 +169,20 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label for="comment" class="doctor-field-title col-4">Additional comments:
+                                            <label for="comment" class="doctor-field-title col-4">Additional
+                                                comments:
                                             </label>
                                             <div class="form-box user-icon mb-30  col-8">
                                                 <input id="comment" class="input-field" type="text" name="comment"
                                                     placeholder="Enter your comment">
                                             </div>
                                         </div>
-                                        <a onClick="submitReceipt()" class="btn result-button translation center">
+                                        <button type="submit" class=" btn result-button translation center">
                                             Submit
-                                            Prescription</a>
-                                    </div>
+                                            Prescription</button>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
