@@ -10,41 +10,24 @@ const getAllLanguages = () => {
   return db.prepare("SELECT * FROM language").all();
 };
 
-const getMealReviews = (meal_id) => {
-  return db.prepare("SELECT * FROM reviews WHERE meal_id = ?").all(meal_id);
-};
-
-const getMealAVGRating = (meal_id) => {
+const addReceipt = (receipt) => {
   return db
     .prepare(
-      "SELECT ROUND (AVG(rating),2) as rating FROM reviews WHERE meal_id = ?"
-    )
-    .all(meal_id);
-};
-
-const getAllAVGRating = () => {
-  return db
-    .prepare(
-      "SELECT meal_id, ROUND (AVG(rating),2) as rating FROM reviews GROUP BY meal_id"
-    )
-    .all();
-};
-
-// console.log(getMealAVGRating(3));
-
-const addMealReview = (review) => {
-  return db
-    .prepare(
-      "INSERT INTO reviews (reviewer_name, city, date, rating, review, meal_id, image) VALUES (?, ?, ?, ?, ?, ?, ?)"
+      "INSERT INTO receipt (patientId, patientName, date, drugName, doseAmount, amountType, timeType, takingMethod, dosesPerDay, dosesTime, duration, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     )
     .run(
-      review.reviewer_name,
-      review.city,
-      review.date,
-      review.rating,
-      review.review,
-      review.meal_id,
-      review.image
+      receipt.patientId,
+      receipt.patientName,
+      receipt.date,
+      receipt.drugName,
+      receipt.doseAmount,
+      receipt.amountType,
+      receipt.timeType,
+      receipt.takingMethod,
+      receipt.dosesPerDay,
+      receipt.dosesTime,
+      receipt.duration,
+      receipt.comment
     );
 };
 
@@ -52,8 +35,5 @@ const addMealReview = (review) => {
 module.exports = {
   getAllLanguages,
   getReceiptById,
-  getMealReviews,
-  addMealReview,
-  getMealAVGRating,
-  getAllAVGRating,
+  addReceipt,
 };
