@@ -41,8 +41,8 @@ var userLang = navigator.language || navigator.userLanguage;
 
 const languageCode = userLang.split("-")[0];
 console.log(languageCode);
-// readPageText();
-// beginTranslation(languageCode);
+readPageText();
+beginTranslation(languageCode);
 
 function beginTranslation(language) {
   if (settings.data.source == "en") {
@@ -129,14 +129,14 @@ async function showReceipt() {
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p ><p class="treatment-title translation">Patient ID:</p> <p class="treatment-description translation">  ${
+                                              <p ><p class="treatment-title translation">Patient Number:</p> <p class="treatment-description translation">  ${
                                                 item.patientId
                                               } </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
                                       </div>
                                       <div class="row-12">
                                           <div class="form-box mb-30">
-                                              <p><p class="treatment-title translation">Drug Name:</p> <p class="treatment-description t-align">  ${
+                                              <p><p class="treatment-title translation">Drug Name:</p> <p class="treatment-description translation">  ${
                                                 item.drugName
                                               } </p><a class="voice-function" onClick="voiceClick(event)"><i class="fa fa-volume-up voice"></i></a></p>
                                           </div>
@@ -383,19 +383,19 @@ async function showQR() {
           item.drugName
         }%0AInstructions: Take ${
           item.amountType != "cream"
-            ? `${item.doseAmount} ${item.amountType},${
-                item.takingMethod == "oral" ? `through the mouth` : ``
-              }, `
-            : `${item.amountType}`
-        } ${
+            ? `${item.doseAmount} ${item.amountType}, ${
+                item.takingMethod == "oral" ? `through the mouth, ` : ``
+              }`
+            : `${item.amountType}, `
+        }${
           item.timeType == "specific"
-            ? `${item.dosesPerDay} times per day,`
+            ? `${item.dosesPerDay} times per day, `
             : item.timeType == "hours"
-            ? `every ${item.dosesTime} hours,`
-            : `when is needed,`
-        }  for ${item.duration} day/days.%0ATreatment Duration: ${
+            ? `every ${item.dosesTime} hours, `
+            : `when is needed, `
+        }for ${item.duration} day/days.%0ATreatment Duration: ${
           item.duration
-        }%0A${
+        } days%0A${
           item.timeType != "specific"
             ? ""
             : `Dose Taking Time: ${item.dosesTime}%0A`
